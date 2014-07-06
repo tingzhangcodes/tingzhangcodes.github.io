@@ -1,0 +1,90 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+	height: 350px;
+	width: 100%;
+	text-align: center;
+	text-transform: uppercase;
+	color: white;
+	font-size: 150%;
+	background-color: grey;
+    /* make background img maintain aspect ratio, from http://kimili.com/journal/the-flexible-scalable-background-image-redux */ 
+    background-image: url("../images/monk_tasting.jpg");
+    background-attachment: fixed;
+    background-repeat: repeat;
+ 
+    margin-top: -40px;
+ 
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    /* end code from http://kimili.com/journal/the-flexible-scalable-background-image-redux */ 
+}
+
+section {
+	float:left;
+	padding-top: 30px;
+	width: 80%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.box-container {
+    max-width: 1000px;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+div.box {
+	background-color:#c8c8da;
+    height: 250px;
+    width: 250px;
+    float: left;
+    display: inline;
+    margin: 10px
+}
+
+div.clear {
+	height: 1000px;
+}
+
+p {
+	font-size: 100%;
+	padding: 15px;
+	margin-top: 0px;
+}
+
+h1 {
+	text-align: center;
+	margin-bottom: 0px;
+}
+
+aside {
+	float: right;
+	width: 15%;
+	padding-top: 30px;
+}
+footer {
+	height: 60px;
+	width: 100%;
+	margin-right:30px;
+	background-color: #666666;
+	color: white;
+	text-align: right;
+	position: fixed;
+	bottom: 0px;
+}
+
+li {
+	font-size: 100%;
+	list-style: none;
+}
