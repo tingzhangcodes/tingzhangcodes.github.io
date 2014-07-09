@@ -37,7 +37,8 @@ header h1 {
 }
 
 nav ul {
-    list-style-type:none;
+    list-style-type: none;
+    padding: none;
 }
 
 nav li {
