@@ -38,7 +38,6 @@ header h1 {
 
 nav ul {
     list-style-type: none;
-    padding: none;
 }
 
 nav li {
@@ -127,6 +126,9 @@ nav a:hover, nav a:active {
 @media screen and (max-width: 480px) {
     footer p {
         display: none;
+    }
+    nav li {
+        text-align: left;
     }
 }
 
