@@ -11,9 +11,12 @@ body {
 }
 
 h1, h2 {
-	    font-family: 'Lato', sans-serif;
+	font-family: 'Lato', sans-serif;
 }
 
+p.code {
+    text-indent:50px;
+}
 header {
 	height: 350px;
 	width: 100%;
