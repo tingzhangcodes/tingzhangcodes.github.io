@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SQL Optimization</title>
+		<link rel="stylesheet" type="text/css" href="../stylesheets/blog.css"/>
+		<link href='http://fonts.googleapis.com/css?family=Playfair+Display|Lato' rel='stylesheet' type='text/css'>
+	</head>
+
+	<body>
+		<header>
+			<div class="container">
+				<h1></br></br>SQL Optimization</h1>	
+		        <nav>
+		          <ul>
+		            <li><a href="../index.html">ABOUT</a></li>
+		            <li><a href="../blog.html">BLOG</a></li>
+		            <li><a href="../projs.html">PROJS</a></li>
+		          </ul>
+		        </nav>
+	    	</div> <!--end container-->
+        </header>
+        
+		<article>
+			<p>Optimizing SQL boils down to a straight-forward concept: reducing the amount of data that a query accesses. Following <a href="http://code.tutsplus.com/tutorials/top-20-mysql-best-practices--net-7855" target="_blank">simple best practices</a> can help achieve that.</p>
+			<p><b>Index</b></p>
+			<p>A table without indexing is like library that doesn't follow the Dewey Decimal system. Using a PRIMARY KEY with AUTO_INCREMENT provides a path for data access. Instead of checking every row until a piece of data is found, a query can <a href="http://www.codeproject.com/Articles/34372/Top-steps-to-optimize-data-access-in-SQL-Server" target="_blank">hone in on the area of the index tree</a> where a PRIMARY KEY lives. </p>
+			<p><b>Avoid SELECT *</b></p>
+			<p>SELECT * requires a query to iterate through every column in a row. Specifying the columns that you'd like to access siginificantly reduces the amount of data touched. </p>
+			<p><b>LIMIT 1 for unique rows</b></p>
+			<p>If you are searching for a single row, appending LIMIT 1 to the end of a query will tell your database to stop scanning after it has located the row.</p>
+			<p><b>Use NOT NULL </b></p>
+			<p>Setting columns to NOT NULL avoids the extra space and complexity required for NULL attributes. In cases where you need NULL attributes, query calls should <a href="http://sqlmag.com/t-sql/t-sql-best-practices-part-1" target="_blank">specify whether NULLs should be included in the result</a>. </p>
+			<p><b>EXPLAIN queries</b></p>
+			<p>Adding EXPLAIN before a SELECT query  will display a table showing the query's stats (the number of rows that were accessed, the keys in use, etc). This is not a best practice per se, but it can help locate the source of slow queries, so that best practices can then be implemented. </p>
+		</article>
+	</body>
+</html>
