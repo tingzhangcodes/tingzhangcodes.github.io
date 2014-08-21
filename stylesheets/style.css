@@ -46,6 +46,11 @@ article {
     margin-right: auto;
 }
 
+article img {
+    height: 200px;
+    width: 200px;
+}
+
 article h1 {
     font-size: 1.5em;
     font-family: 'Lato', sans-serif;
@@ -127,29 +132,34 @@ nav a:hover, nav a:active {
     display: block;
 }
 
+.projs {
+    padding-bottom: 30px;
+}
+
 /*Medium screens*/
 @media screen and (max-height: 540px) {
     footer ul {
         display: none;
     }
 }
-@media screen and (max-width: 720px) {
-    .grid_1,
-    .grid_2,
-    .grid_3,
-    .grid_5,
-    .grid_7,
-    .grid_8,
-    .grid_9,
-    .grid_10 {
-        width: 100%;
+@media screen and (min-width: 720px) {
+    .projs {
+        min-width: 700px;
     }
+}
+@media screen and (max-width: 720px) {
     .grid_4 {
         width: 80%;
     }
     .grid_6 {
         width: 20%;
         margin-top: 30px;
+    }
+    .thumbnail {
+        width: 100%;
+    }
+    .description  {
+        width: 100%;
     }
 
     #menu-icon {
