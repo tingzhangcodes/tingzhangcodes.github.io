@@ -1,21 +1,6 @@
 body {
     font-size: 100%; 
     font-family: 'Playfair Display', serif;
-    /* make background img maintain aspect ratio, from http://kimili.com/journal/the-flexible-scalable-background-image-redux */ 
-    /* comment out background img
-    background-attachment: fixed;
-    background-color: #333;
-    background-image: url(../images/cat.jpg);
-    background-position: top center;
-    background-repeat: no-repeat;
- 
-    margin:0;
-    padding: 0;
- 
-    background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    */
 }
 
 p {
@@ -36,13 +21,20 @@ header h1 {
     font-family: 'Lato', sans-serif;
 }
 
+#menu-icon {
+    display: none;
+    width: 40px;
+    height: 40px;
+    background: url(../images/menu-icon.png);
+}
+
 nav ul {
     list-style-type: none;
 }
 
 nav li {
     float: left;
-    width: 33.33%; /*for three menu items*/
+    width: 25%; /*for four menu items*/
     text-align: center;
     min-width: 90px;
 }
@@ -61,18 +53,7 @@ nav a:link,nav a:visited {
 }
 
 nav a:hover, nav a:active {
-    color: #1ca2f7;
-}
-
-.container {
-    width: 90%;
-    max-width: 1000px;
-    min-width: 310px;
-    margin: auto;
-}
-
-.img-box {
-    
+    color:  #4B0082;
 }
 
 .img-box img {
@@ -107,27 +88,65 @@ nav a:hover, nav a:active {
 }
 
 /*Medium screens*/
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 710px) {
     .grid_1,
     .grid_2,
     .grid_3,
-    .grid_4,
     .grid_5,
-    .grid_6,
     .grid_7,
     .grid_8,
     .grid_9,
     .grid_10 {
         width: 100%;
     }
-    .text-box {
-        margin-top: 5%;
-        text-align: center;
-        padding: 0;
+    .grid_4 {
+        width: 80%;
     }
-    header h1 {
-        text-align: center;
+    .grid_6 {
+        width: 20%;
+        margin-top: 30px;
     }
+
+    .container {
+        min-width: 400px;
+    }
+
+    #menu-icon {
+        display:inline-block;
+    }
+
+    nav ul, nav:active ul { 
+
+        display: none;
+        position: absolute;
+        padding: 20px;
+        background: #fff;
+        border: 3px solid black;
+        right: 20px;
+        top: 40px;
+        width: 30%;
+        border-radius: 5px;
+    }
+
+    nav li {
+
+        text-align: center;
+        width: 100%;
+        padding: 10px 0;
+        margin: 0;
+
+    }
+
+    nav:hover ul {
+
+        display: block;
+
+    }
+
+    .text-box p {
+        display: none;
+    }
+
 }
 
 /*Small screens*/
@@ -135,6 +154,7 @@ nav a:hover, nav a:active {
     footer p {
         display: none;
     }
+
     nav li {
         text-align: left;
     }
