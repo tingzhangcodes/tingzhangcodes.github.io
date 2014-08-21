@@ -6,14 +6,30 @@ body {
 p {
     font-size: 1em;
 }
-
+footer {
+    bottom: 5px;
+    position: absolute;
+    text-align: right;
+}
 footer p {
-    font-size: .75em;
+    font-size: .85em;
+}
+footer ul {
+    list-style-type: none;
+}
+footer ul li{
+    float: right;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+footer ul a {
+    display: block;
+    text-decoration: none;
+    color: #4B0082;
 }
 
-footer {
-    bottom: 0;
-    position: absolute;
+footer ul a:hover {
+    color: black;
 }
 
 header h1 {
@@ -112,6 +128,11 @@ nav a:hover, nav a:active {
 }
 
 /*Medium screens*/
+@media screen and (max-height: 540px) {
+    footer ul {
+        display: none;
+    }
+}
 @media screen and (max-width: 720px) {
     .grid_1,
     .grid_2,
@@ -166,14 +187,14 @@ nav a:hover, nav a:active {
     .text-box p {
         display: none;
     }
+    footer ul{
+        display: none;
+    }
 
 }
 
 /*Small screens*/
 @media screen and (max-width: 400px) {
-    footer p {
-        display: none;
-    }
     header h1 {
         font-size: 1.75em;
     }
