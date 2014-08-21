@@ -71,6 +71,14 @@ nav a:hover, nav a:active {
     margin: auto;
 }
 
+.img-box {
+    
+}
+
+.img-box img {
+    width: 400px;
+}
+
 .grid_1 {width: 10%;}
 .grid_2 {width: 20%;}
 .grid_3 {width: 30%;}
