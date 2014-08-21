@@ -137,7 +137,7 @@ nav a:hover, nav a:active {
 }
 
 /*Medium screens*/
-@media screen and (max-height: 540px) {
+@media screen and (max-height: 500px) {
     footer ul {
         display: none;
     }
