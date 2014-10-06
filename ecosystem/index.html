@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/style.css" />
+  <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700|Lato:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="css/game.css">
+
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="js/application.js"></script>
+  <script src="js/game.js"></script>
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <title></title>
+</head>
+<body>
+    <div class="container">
+        <header class="grid_4">
+          <h1>PROJECTS</h1>
+        </header>
+
+        <nav class="grid_6">
+        <!-- from http://blog.teamtreehouse.com/create-an-absolute-basic-mobile-css-responsive-navigation-menu -->
+        <a href="#" id="menu-icon"></a>
+
+        <ul>
+
+          <li><a href="../index.html">ABOUT</a></li>
+          <li><a href="../blog.html">BLOG</a></li>
+          <li><a href="../projs.html">PROJECTS</a></li>
+          <li><a href="mailto:stephtzhang@gmail.com">CONTACT</a></li>
+
+        </ul>
+        </nav>
+      </div>
+      <br><br><br><br><br><br>
+  <div class = "game_container">
+    <h4>Watch the deer eat the trees.<br>When the trees are gone, the deer will starve.<br>Score points by making the ecosystem last longer.</h4>
+
+    <div id="world">
+    </div>
+
+    <div class="centered_form">
+      <form id="game_info">
+        <div class="pure-form">
+          <input id="deer" class="form-control" name="deer" placeholder="Deer">
+        </div><br>
+        <div class="pure-form">
+          <input id="tree" class="form-control" name="tree" placeholder="Trees">
+        </div><br>
+        <input type="button" value="Go!" class="pure-button">
+      </form>
+    </div>
+  </div>
+</body>
+</html>
