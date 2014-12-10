@@ -7,19 +7,20 @@ h1 {
 	color: black;
 }
 table, td, th {
-    color: #4C4951;
-    font-size: 1.25em;
-    background-color: #90EE90;
+  color: #4C4951;
+  font-size: 1.25em;
+  background-color: #90EE90;
+  border-radius: 10px;
 }
 
 td {
-    height: 60px;
+  height: 60px;
 	width: 60px;
 	text-align: center;
 }
 
 td:hover {
-    background-color: #EEE;          
+   background-color: #EEE;          
 }
 
 p {
