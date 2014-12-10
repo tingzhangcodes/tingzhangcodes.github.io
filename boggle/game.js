@@ -94,7 +94,7 @@ BoggleBoard.prototype.score = function() {
 }
 BoggleBoard.prototype.displayScore = function() {
 	score = this.score();
-	document.getElementById("score").innerHTML = "You scored: " + score;
+	document.getElementById("score").innerHTML = "Current score: " + score;
 }
 BoggleBoard.prototype.displayWords = function() {
 	this.move();
