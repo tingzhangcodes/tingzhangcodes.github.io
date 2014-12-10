@@ -38,9 +38,6 @@ $(function() {
 
 	$('#move-btn').click(function(){
 			 board.displayWords();
-	});
-
-	$('#score-btn').click(function(){
 			 board.displayScore();
 	});
 
