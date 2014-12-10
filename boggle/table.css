@@ -45,5 +45,16 @@ button:hover {
 }
 
 .updates {
-	max-width: 300px;
+	width: 250px;
+	float: left;
+	margin: 10px;
+}
+
+#board {
+	float: left;
+}
+
+.game-container {
+	width: 600px;
+	margin: auto;
 }
