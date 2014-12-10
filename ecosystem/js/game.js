@@ -3,18 +3,21 @@ function Game(deerNum, treeNum) {
   this.deer = this.createBeings(Deer, deerNum);
   this.trees = this.createBeings(Tree, treeNum);
   this.interval = setInterval(this.process.bind(this), 50);
-  this.score = 0;
+  this.startTime = new Date();
 }
 
 Game.prototype.process = function() {
-  this.score += 1;
   this.playRound();
 
   if (this.checkGameover()) {
     clearInterval(this.interval);
-    alert("Game over! You scored " + this.score + ".");
+    alert("Game over! You scored " + this.getScore() + ".");
     $('#game_info')[0].reset();
   }
+}
+
+Game.prototype.getScore = function() {
+  return Math.round((new Date() - this.startTime) / 10)
 }
 
 Game.prototype.checkGameover = function() {
