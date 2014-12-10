@@ -1,55 +1,51 @@
 <!DOCTYPE html>
 <html>
-    <head>
-	    <title>BOGGLE BOARD</title>
-      <meta charset="UTF-8">
+  <head>
+    <title>BOGGLE BOARD</title>
+    <meta charset="UTF-8">
 	  <link rel="stylesheet" type="text/css" href="../stylesheets/style.css" />
 	  <link rel="stylesheet" type="text/css" href="table.css"/>
 
-      <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700|Lato:400,700' rel='stylesheet' type='text/css'>
-      <meta name="viewport" content="width=device-width, initial-scale =1.0, user-scalable = no">
-      <meta name="description" content="Steph Zhang is an NY-based developer, designer, and sommelier.">
-      <meta name="author" content="http://stephtzhang.com/">
-      <meta name="keywords" content="steph, zhang, stephanie, steph zhang, stephanie zhang, designer, developer, web developer, sommelier, wine, new york">
-    </head>
-    <body>
-      <div class="container">
-        <header class="grid_4">
-          <h1>PROJECTS</h1>
-        </header>
 
-        <nav class="grid_6">
-        <!-- from http://blog.teamtreehouse.com/create-an-absolute-basic-mobile-css-responsive-navigation-menu -->
-        <a href="#" id="menu-icon"></a>
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700|Lato:400,700' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale =1.0, user-scalable = no">
+    <meta name="description" content="Steph Zhang is an NY-based developer, designer, and sommelier.">
+    <meta name="author" content="http://stephtzhang.com/">
+    <meta name="keywords" content="steph, zhang, stephanie, steph zhang, stephanie zhang, designer, developer, web developer, sommelier, wine, new york">
 
-        <ul>
+  </head>
+  <body>
+    <div class="container">
+      <header class="grid_4">
+        <h1>PROJECTS</h1>
+      </header>
 
-          <li><a href="../index.html">ABOUT</a></li>
-          <li><a href="../blog.html">BLOG</a></li>
-          <li><a href="../projs.html">PROJECTS</a></li>
-          <li><a href="mailto:stephtzhang@gmail.com">CONTACT</a></li>
+      <nav class="grid_6">
+      <!-- from http://blog.teamtreehouse.com/create-an-absolute-basic-mobile-css-responsive-navigation-menu -->
+      <a href="#" id="menu-icon"></a>
 
-        </ul>
-        </nav>
-      </div>
+      <ul>
 
-  </br></br></br></br></br></br>
+        <li><a href="../index.html">ABOUT</a></li>
+        <li><a href="../blog.html">BLOG</a></li>
+        <li><a href="../projs.html">PROJECTS</a></li>
+        <li><a href="mailto:stephtzhang@gmail.com">CONTACT</a></li>
 
-		<script src="my_solution.js"></script>
-		<script type='text/javascript' src='jquery.js'></script>
-		<script>
-		// modified from http://stackoverflow.com/questions/788225/table-row-and-column-number-in-jquery
-		$('td').click(function(){
-		  var col = $(this).parent().children().index($(this));
-		  var row = $(this).parent().parent().children().index($(this).parent());
-		  board.selectLetter(row,col);
-		  board.displayLetters();
-		});
-		</script>
+      </ul>
+      </nav>
+    </div>
+
+    </br></br></br></br></br></br>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="game.js"></script>
+    <script src="application.js"></script>
+
+    <div id="board"></div>
 
 		<div class="button">
-			<button onclick="board.displayWords()">Move</button>
-			<button onclick="board.displayScore()">Score</button>
+			<button id="move-btn">Move</button>
+			<button id="score-btn">Score</button>
 		</div>
 		<div class="updates">
 			<p id="letters"></p>
