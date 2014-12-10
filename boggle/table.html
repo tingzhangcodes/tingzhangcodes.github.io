@@ -13,6 +13,10 @@
     <meta name="author" content="http://stephtzhang.com/">
     <meta name="keywords" content="steph, zhang, stephanie, steph zhang, stephanie zhang, designer, developer, web developer, sommelier, wine, new york">
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="game.js"></script>
+    <script src="application.js"></script>
+
   </head>
   <body>
     <div class="container">
@@ -37,18 +41,13 @@
 
     </br></br></br></br></br></br>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="game.js"></script>
-    <script src="application.js"></script>
-
     <div id="board"></div>
 
-		<div class="button">
-			<button id="move-btn">Move</button>
-			<button id="score-btn">Score</button>
-		</div>
 		<div class="updates">
-			<p id="letters"></p>
+			<p id="letters">Current letters:</p>
+      <div class="button">
+        <button id="move-btn">Move</button>
+      </div>
 			<p id="words"></p>
 			<p id="score"></p>		
 		</div>
