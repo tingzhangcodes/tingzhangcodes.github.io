@@ -228,12 +228,12 @@ nav a:hover, nav a:active {
 
         display: none;
         position: absolute;
-        padding: 20px;
+        padding: 30px;
         background: #fff;
         border: 3px solid black;
         right: 20px;
         top: 40px;
-        width: 30%;
+        width: 125px;
         border-radius: 5px;
         z-index: 1;
     }
