@@ -34,9 +34,9 @@ p {
     float: left;
     font-size: 1.25em;
     font-family: 'Lato', sans-serif;
-    position: relative;
+/*    position: relative;
     top: 35%;
-    transform: translateY(-65%);
+    transform: translateY(-65%);*/
 }
 
 }
