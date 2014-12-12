@@ -253,9 +253,17 @@ nav a:hover, nav a:active {
         color: #9932CC;
     }
 
-    nav:hover ul {
+    nav a.home:link, nav a.home:visited {
+        color: black;
+    }   
 
+    nav a.home:hover, nav a.home:active {
+        color: #9932CC;
+    }
+
+    nav:hover ul {
         display: block;
+    }
 
     footer ul{
         display: none;
