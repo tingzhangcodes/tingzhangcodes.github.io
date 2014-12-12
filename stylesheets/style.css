@@ -146,6 +146,9 @@ nav a:link,nav a:visited {
     -webkit-transition:.5s;
     transition:.5s;
 }
+nav a.home:hover, nav a.home:active {
+    color: #9932CC;
+}
 
 nav a:hover, nav a:active {
     color: #9932CC;
