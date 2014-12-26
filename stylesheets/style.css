@@ -1,5 +1,5 @@
 body {
-    font-size: 100%; 
+    font-size: 100%;
     font-family: 'Playfair Display', serif;
 }
 
@@ -13,10 +13,10 @@ p {
     background-image: url(../images/long_hair.jpg);
     background-position: top center;
     background-repeat: no-repeat;
- 
+
     margin:0;
     padding: 0;
- 
+
     background-size: cover;
     -moz-background-size: cover;
     -webkit-background-size: cover;
@@ -34,37 +34,11 @@ p {
     float: left;
     font-size: 1.25em;
     font-family: 'Lato', sans-serif;
-/*    position: relative;
-    top: 35%;
-    transform: translateY(-65%);*/
-}
-
 }
 
 footer {
     bottom: 5px;
     position: absolute;
-    text-align: right;
-}
-footer p {
-    font-size: .85em;
-}
-footer ul {
-    list-style-type: none;
-}
-footer ul li{
-    float: right;
-    padding-left: 8px;
-    padding-right: 8px;
-}
-footer ul a {
-    display: block;
-    text-decoration: none;
-    color: #9932CC;
-}
-
-footer ul a:hover {
-    color: black;
 }
 
 header h1 {
@@ -259,7 +233,7 @@ nav a:hover, nav a:active {
 
     nav a.home:link, nav a.home:visited {
         color: black;
-    }   
+    }
 
     nav a.home:hover, nav a.home:active {
         color: #9932CC;
@@ -269,9 +243,9 @@ nav a:hover, nav a:active {
         display: block;
     }
 
-    footer ul{
+/*    footer ul{
         display: none;
-    }
+    }*/
 
 }
 
