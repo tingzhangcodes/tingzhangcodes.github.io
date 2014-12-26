@@ -30,6 +30,10 @@ p {
     color: white;
 }
 
+.big-clear {
+    height: 150px;
+}
+
 .text-box {
     float: left;
     font-size: 1.25em;
