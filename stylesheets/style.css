@@ -168,18 +168,80 @@ nav a:hover, nav a:active {
     padding-bottom: 30px;
 }
 
+/*Icomoon styling*/
+@font-face {
+    font-family: 'icomoon';
+    src:url('../fonts/icomoon.eot?-1pulux');
+    src:url('../fonts/icomoon.eot?#iefix-1pulux') format('embedded-opentype'),
+        url('../fonts/icomoon.woff?-1pulux') format('woff'),
+        url('../fonts/icomoon.ttf?-1pulux') format('truetype'),
+        url('../fonts/icomoon.svg?-1pulux#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    font-size: 2.25em;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-twitter:before {
+    content: "\ea91";
+}
+.icon-github:before {
+    content: "\eab1";
+}
+.icon-linkedin:before {
+    content: "\eac8";
+}
+
+.icons {
+    min-width: 200px;
+}
+
+.icons a:link, .icons a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+.icons a:hover, .icons a:active {
+  color: #9932CC;
+}
+
 /*Medium screens*/
-@media screen and (max-height: 500px) {
+/*@media screen and (max-height: 500px) {
     footer ul {
         display: none;
     }
-}
+}*/
+
 @media screen and (min-width: 720px) {
     .projs {
         min-width: 700px;
     }
 }
-@media screen and (max-width: 850px) {
+
+@media screen and (max-width: 875px) {
+    header h1{
+        font-size: 2.5em;
+    }
+}
+@media screen and (max-width: 800px) {
+    .text-box {
+        display: none;
+    }
+}
+@media screen and (max-width: 750px) {
     .grid_4 {
         width: 80%;
     }
@@ -198,11 +260,7 @@ nav a:hover, nav a:active {
         display:inline-block;
     }
 
-    .text-box {
-        display: none;
-    }
-
-    nav ul, nav:active ul { 
+    nav ul, nav:active ul {
 
         display: none;
         position: absolute;
