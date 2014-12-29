@@ -22,6 +22,10 @@ p {
     -webkit-background-size: cover;
 }
 
+.container {
+    margin: 10 0 0 15;
+}
+
 .transparent-black {
     background-color: rgba(0,0,0,.3); /* sent opacity to .6 */
     overflow: auto;
