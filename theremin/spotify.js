@@ -6,7 +6,7 @@ $(document).ready(function() {
 	var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
 
 	$(document).mousemove(function(event) {
-    var x = event.pageX;
+    var x = event.pageX - 900;
     var y = event.pageY;
 		$(".x").text("X: " + x);
 		$(".y").text("Y: " + y);
