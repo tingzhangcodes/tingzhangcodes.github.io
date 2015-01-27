@@ -8,7 +8,7 @@ $(document).ready(function() {
 	$(document).mousemove(function(event) {
     var x = event.pageX - 900;
     var y = event.pageY;
-		$(".x").text("X: " + x);
+		$(".x").text("X: " + (x + 900));
 		$(".y").text("Y: " + y);
 
 		myDataRef.push({xCoord: x, yCoord: y, userId: userId});

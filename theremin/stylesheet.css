@@ -26,30 +26,27 @@ border: 5px solid black;
   top: 25%;
 }
 
+img{
+  position:fixed;
+  bottom:5%;
+  left:46%;
+}
+
 @media only screen and (max-width: 1340px) {
 
-  #header {
-  	font-size: 2.5em;
-  }
-
-	.x, .y {
-  	font-size: 1.8em;
-	}
+  #header {font-size: 2.5em;}
+	.x, .y {font-size: 1.8em;}
 }
 
 @media only screen and (max-width: 880px) {
 
-  #header {
-  	font-size: 1.8em;
-  }
-
-	.x, .y {
-  	font-size: 1.8em;
-	}
+  #header {font-size: 1.8em;}
+  .x, .y {font-size: 1.8em;}
+  img {bottom:5%;left:42.5%;}
 }
 
 @media only screen and (max-width: 610px) {
 
-   #header { font-size: 1em; }
-
+  #header { font-size: 1em; }
+  img {bottom:50%;left:39.5%;}
 }
