@@ -44,7 +44,18 @@ p {
     font-family: 'Lato', sans-serif;
 }
 
+.icon-padding {
+    width: 5px;
+    height: 5px;
+}
+
+.icon {
+    display: inline-block;
+    padding-right: 20px;
+}
+
 footer {
+    font-size: 1.25em;
     bottom: 5px;
     position: absolute;
 }
@@ -215,6 +226,7 @@ nav a:hover, nav a:active {
 
 .icons {
     min-width: 200px;
+    bottom: 10px;
 }
 
 .icons a:link, .icons a:visited {
@@ -320,10 +332,6 @@ nav a:hover, nav a:active {
     nav:hover ul {
         display: block;
     }
-
-/*    footer ul{
-        display: none;
-    }*/
 
 }
 
