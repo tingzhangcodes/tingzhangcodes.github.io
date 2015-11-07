@@ -1,193 +1,119 @@
+/*
+ * General styling
+ *
+ */
 body {
     font-size: 100%;
     font-family: 'Playfair Display', serif;
 }
 
 p {
-    font-size: 1em;
-}
-
-.home-page {
-    background-attachment: fixed;
-    background-color: #333;
-    background-image: url(../images/long_hair.jpg);
-    background-position: top center;
-    background-repeat: no-repeat;
-
-    margin:0;
-    padding: 0;
-
-    background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-}
-
-.container {
-    margin: 10 0 0 15;
-}
-
-.transparent-black {
-    background-color: rgba(0,0,0,.3); /* sent opacity to .6 */
-    overflow: auto;
-    width: 100%;
-    height: 100%;
-    color: white;
-}
-
-.big-clear {
-    height: 150px;
-}
-
-.text-box {
-    float: left;
     font-size: 1.5em;
-    font-family: 'Lato', sans-serif;
 }
 
-.icon-padding {
-    width: 5px;
-    height: 5px;
-}
-
-.icon {
-    display: inline-block;
-    padding-right: 20px;
-}
-
-footer {
-    font-size: 1.25em;
-    bottom: 5px;
-    position: absolute;
-}
-
-header h1 {
+h1 {
     font-size: 3em;
-    font-family: 'Lato', sans-serif;
-    font-weight: bold;
-}
-
-article {
-    padding-top: 5px;
-    max-width: 700px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-article img {
-    height: 200px;
-    width: 200px;
-}
-
-article h1 {
-    font-size: 1.5em;
-    font-family: 'Lato', sans-serif;
-}
-
-article h1 a {
-    text-decoration: none;
-    color: #9932CC;
-}
-
-article h1 a:hover {
-    color: black;
-}
-
-/*from http://blog.teamtreehouse.com/create-an-absolute-basic-mobile-css-responsive-navigation-menu*/
-#menu-icon {
-    display: none;
-    width: 40px;
-    height: 40px;
-    background: url(../images/menu-icon.png);
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    margin-top: 0;
 }
 
 nav ul {
     list-style-type: none;
 }
 
-nav li {
-    float: left;
-    width: 25%; /*for four menu items*/
-    text-align: center;
-    min-width: 90px;
+/*
+ * Bio styling
+ *
+ */
+.bio__description {
+    /* TODO this color can be sass var */
+    color: rgba(51,51,51,.6);
 }
 
-nav a.home:link,nav a.home:visited {
-    color: white;
-    font-weight: bold;
-    display: block;
-    text-decoration: none;
-    font-size: 1.5em;
-    font-family: 'Lato', sans-serif;
-    -o-transition:.5s;
-    -ms-transition:.5s;
-    -moz-transition:.5s;
-    -webkit-transition:.5s;
-    transition:.5s;
+/* TODO make this a vertically align sass mixin */
+.bio__container {
+    /* vertically and horizontally center in parent container */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 10px 20px 10px 20px;
 }
 
-nav a:link,nav a:visited {
-    color: black;
-    font-weight: bold;
-    display: block;
-    text-decoration: none;
-    font-size: 1.5em;
-    font-family: 'Lato', sans-serif;
-    -o-transition:.5s;
-    -ms-transition:.5s;
-    -moz-transition:.5s;
-    -webkit-transition:.5s;
-    transition:.5s;
-}
-nav a.home:hover, nav a.home:active {
-    color: #9932CC;
-}
-
-nav a:hover, nav a:active {
-    color: #9932CC;
+/*
+ * Avatar styling
+ *
+ */
+/* TODO make this a horizontally vertically align mixin that takes a height and width vars */
+.avatar__container {
+    /* TODO these pixel values can be a sass var */
+    height: 400px;
+    width: 400px;
+    /* vertically and horizontally center in parent container */
+    position: relative;
+    left:50%;
+    top:50%;
+    /* TODO These pixels values should be half of the var */
+    margin:-200px 0 0 -200px;
 }
 
-.img-box img {
-    height: 75%;
-    max-height: 600px;
+.avatar__image--circular {
+    border-radius: 50%;
+    height: 100%;
 }
 
-.grid_1 {width: 10%;}
-.grid_2 {width: 20%;}
-.grid_3 {width: 30%;}
-.grid_4 {width: 40%;}
-.grid_5 {width: 50%;}
-.grid_6 {width: 60%;}
-.grid_7 {width: 70%;}
-.grid_8 {width: 80%;}
-.grid_9 {width: 90%;}
-.grid_10 {width: 100%;}
+/*
+ * Grid styling
+ *
+ */
+.grid-1 {width: 10%;}
+.grid-2 {width: 20%;}
+.grid-3 {width: 30%;}
+.grid-4 {width: 40%;}
+.grid-5 {width: 50%;}
+.grid-6 {width: 60%;}
+.grid-7 {width: 70%;}
+.grid-8 {width: 80%;}
+.grid-9 {width: 90%;}
+.grid-10 {width: 100%;}
 
-.grid_1,
-.grid_2,
-.grid_3,
-.grid_4,
-.grid_5,
-.grid_6,
-.grid_7,
-.grid_8,
-.grid_9,
-.grid_10 {
+.grid-1,
+.grid-2,
+.grid-3,
+.grid-4,
+.grid-5,
+.grid-6,
+.grid-7,
+.grid-8,
+.grid-9,
+.grid-10 {
     margin: 0%;
     padding: 0%;
     float: left;
     display: block;
+    height: 100%;
 }
 
-.left-cushion{
-    padding-left: 20px;
+/*
+ *Icon styling
+ *
+ */
+.icon {
+    display: inline-block;
+    padding-right: 20px;
 }
 
-.projs {
-    padding-bottom: 30px;
+.icon a:link, .icon a:visited {
+  text-decoration: none;
+  /* TODO sass var for color */
+  color: #003270;
 }
 
-/*Icomoon styling*/
+.icon a:hover, .icon a:active {
+  /* TODO sass var for color */
+  color: #1560BD;
+}
+
 @font-face {
     font-family: 'icomoon';
     src:url('../fonts/icomoon.eot?-1pulux');
@@ -224,125 +150,63 @@ nav a:hover, nav a:active {
     content: "\eac8";
 }
 
-.icons {
-    min-width: 200px;
-    bottom: 10px;
-}
-
-.icons a:link, .icons a:visited {
-  text-decoration: none;
-  color: white;
-}
-
-.icons a:hover, .icons a:active {
-  color: #9932CC;
-}
-
-.clear {
-    height: 50px;
-}
-
-/*Medium screens*/
-/*@media screen and (max-height: 500px) {
-    footer ul {
-        display: none;
-    }
-}*/
-
-@media screen and (min-width: 720px) {
-    .projs {
-        min-width: 700px;
-    }
-}
-
-@media screen and (max-width: 975px) {
-    .clear {
-            display: none;
-    }
-    .big-clear {
-            height: 125px;
-    }
-}
-@media screen and (max-width: 875px) {
-    header h1{
-        font-size: 2.5em;
-    }
-}
-@media screen and (max-width: 800px) {
-    .text-box {
-        display: none;
-    }
-}
-@media screen and (max-width: 750px) {
-    .grid_4 {
-        width: 80%;
-    }
-    .grid_6 {
-        width: 20%;
-        margin-top: 30px;
-    }
-    .thumbnail {
+@media screen and (max-width: 1000px) {
+    /*
+     * Grid styling
+     *
+     */
+    .grid-1,
+    .grid-2,
+    .grid-3,
+    .grid-4,
+    .grid-5,
+    .grid-6,
+    .grid-7,
+    .grid-8,
+    .grid-9,
+    .grid-10 {
         width: 100%;
-    }
-    .description  {
-        width: 100%;
-    }
-
-    #menu-icon {
-        display:inline-block;
+        height: auto;
+        float: none;
+        padding: 10px 0 10px 0;
+        margin: 10px 0 10px 0;
     }
 
-    nav ul, nav:active ul {
-
-        display: none;
-        position: absolute;
-        padding: 30px;
-        background: #fff;
-        border: 3px solid black;
-        right: 20px;
-        top: 40px;
-        width: 125px;
-        border-radius: 5px;
-        z-index: 1;
+    /*
+     * Avatar styling
+     *
+     */
+    .avatar__parent-container {
+        height: 200px;
     }
 
-    nav li {
+    .avatar__container {
+        height: 200px;
+        width: 200px;
+        margin: 0 auto;
+        /* TODO make this a reset vertically align mixin */
+        /* reset from vertical align */
+        left: 0%;
+        top: 0%;
+    }
+
+    /*
+     * Bio styling
+     *
+     */
+    .bio__container {
+        /* TODO use vertically align mixin */
+        /* reset from vertical align */
+        position: relative;
+        top: 0%;
+        transform: translateY(0%);
+    }
+
+    /*
+     * General styling
+     *
+     */
+    body {
         text-align: center;
-        width: 100%;
-        padding: 10px 0;
-        margin: 0;
-    }
-
-    nav a:link, nav a:visited {
-        color: black;
-    }
-
-    nav a:hover, nav a:active {
-        color: #9932CC;
-    }
-
-    nav a.home:link, nav a.home:visited {
-        color: black;
-    }
-
-    nav a.home:hover, nav a.home:active {
-        color: #9932CC;
-    }
-
-    nav:hover ul {
-        display: block;
-    }
-
-}
-
-/*Small screens*/
-@media screen and (max-width: 400px) {
-    header h1 {
-        font-size: 1.75em;
-    }
-    .grid_6 {
-        margin-top: 15px;
     }
 }
-
-
