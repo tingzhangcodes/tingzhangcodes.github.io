@@ -150,6 +150,10 @@ nav ul {
     content: "\eac8";
 }
 
+.icon-file-text2:before {
+    content: "\e926";
+}
+
 @media screen and (max-width: 1000px) {
     /*
      * Grid styling
