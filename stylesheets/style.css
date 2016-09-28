@@ -106,12 +106,12 @@ nav ul {
 .icon a:link, .icon a:visited {
   text-decoration: none;
   /* TODO sass var for color */
-  color: #003270;
+  color: #6284a6;
 }
 
 .icon a:hover, .icon a:active {
   /* TODO sass var for color */
-  color: #1560BD;
+  color: #8cbdee;
 }
 
 @font-face {
