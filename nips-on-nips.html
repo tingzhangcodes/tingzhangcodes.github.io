@@ -40,8 +40,8 @@
         var el = document.getElementById(id);
         var currentDim = parseInt(el.style.width.slice(0, -2));
 
-        var xStep = randomFloat(-screenWidth * .005, screenWidth * .005);
-        var yStep = randomFloat(-screenHeight * .005, screenHeight * .005);
+        var xStep = randomFloat(-screenWidth * .0025, screenWidth * .0025);
+        var yStep = randomFloat(-screenHeight * .0025, screenHeight * .0025);
         var screenHeight = screen.height;
         var screenWidth = screen.width;
 
@@ -97,10 +97,10 @@
     }
 
     async function happyBdayToMeeeee() {
-        var numImages = 150;
+        var numImages = 200;
         var shrinkRate = 1.25;
         var growthRate = shrinkRate * 2;
-        var interval = 15;
+        var interval = 75;
 
         for (var elementId = 1; elementId <= numImages; elementId++) {
             var image = document.createElement('img');
