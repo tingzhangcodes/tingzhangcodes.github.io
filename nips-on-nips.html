@@ -108,7 +108,7 @@
             image.id = elementId + '';
             image.style.zIndex = elementId;
 
-            startingDim = randomFloat(MIN_DIM, MAX_DIM);
+            var startingDim = randomFloat(MIN_DIM, MAX_DIM);
             image.style.width = startingDim + 'px';
             image.style.height = startingDim + 'px';
 
@@ -118,6 +118,19 @@
             growShrink(elementId, growthRate, shrinkRate, interval);
         }
 
+        while (1) {
+            // reset position and sizing every 30 sec
+            await sleep(1000 * 30)
+            for (var elementId = 1; elementId <= numImages; elementId++) {
+                var image = document.getElementById(elementId + '');
+                var resetDim = randomFloat(MIN_DIM, MAX_DIM);
+                image.style.width = resetDim + 'px';
+                image.style.height = resetDim + 'px';
+
+                image.style.marginLeft = randomFloat(0, screen.width - resetDim) + 'px';
+                image.style.marginTop = randomFloat(0, screen.height - resetDim) + 'px';
+            }
+        }
     }
 
     happyBdayToMeeeee()
