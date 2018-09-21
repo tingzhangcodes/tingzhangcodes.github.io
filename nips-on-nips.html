@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+    img {
+        position: absolute;
+    }
+    body {
+        background-image: url('images/nips.jpg');
+        background-repeat: repeat;
+    }
+</style>
+
+</head>
+
+<body>
+
+</body>
+
+<script>
+    const SCREEN_HEIGHT = screen.height;
+    const SCREEN_WIDTH = screen.width;
+    const MAX_DIM = 500;
+    const MIN_DIM = 50;
+
+    function randomFloat(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+
+    async function grow(id, rate, interval) {
+        var jitter = randomFloat(-interval, interval);
+        await sleep(interval + jitter)
+
+        var el = document.getElementById(id);
+        var currentDim = parseInt(el.style.width.slice(0, -2));
+
+        var xStep = randomFloat(-SCREEN_WIDTH * .005, SCREEN_WIDTH * .005);
+        var yStep = randomFloat(-SCREEN_HEIGHT * .005, SCREEN_HEIGHT * .005);
+        var screenHeight = screen.height;
+        var screenWidth = screen.width;
+
+        while (currentDim < MAX_DIM) {
+            var newDim = (currentDim + rate) + 'px';
+            el.style.width = newDim;
+            el.style.height = newDim;
+
+            var currentTop = parseInt(el.style.marginTop.slice(0, -2));
+            var currentLeft = parseInt(el.style.marginLeft.slice(0, -2));
+            var newTop = currentTop + yStep;
+            var newLeft = currentLeft + xStep;
+
+            if (newTop <= 0 || newLeft <= 0) {
+                return;
+            }
+
+            el.style.marginTop = newTop + 'px';
+            el.style.marginLeft = newLeft + 'px';
+
+            await sleep(interval)
+            var currentDim = parseInt(el.style.width.slice(0, -2));
+
+            if (newLeft >= SCREEN_WIDTH * .975 - currentDim || newTop >= SCREEN_HEIGHT * .875 - currentDim) {
+                return;
+            }
+        }
+    }
+
+    async function shrink(id, rate, interval) {
+        var el = document.getElementById(id);
+        var currentDim = parseInt(el.style.width.slice(0, -2));
+        while (currentDim > MIN_DIM) {
+            var newDim = (currentDim - rate) + 'px';
+            el.style.width = newDim;
+            el.style.height = newDim;
+            await sleep(interval)
+            var currentDim = parseInt(el.style.width.slice(0, -2));
+        }
+    }
+
+    async function growShrink(id, growthRate, shrinkRate, interval) {
+        var el = document.getElementById(id);
+
+        while (1) {
+            await grow(id, growthRate, interval);
+            await shrink(id, shrinkRate, interval);
+        }
+    }
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function happyBdayToMeeeee() {
+        var numImages = 150;
+        var shrinkRate = 1.25;
+        var growthRate = shrinkRate * 2;
+        var interval = 15;
+
+        for (var elementId = 1; elementId <= numImages; elementId++) {
+            var image = document.createElement('img');
+            image.src = 'images/nips.jpg';
+            image.id = elementId + '';
+            image.style.zIndex = elementId;
+
+            startingDim = randomFloat(MIN_DIM, MAX_DIM);
+            image.style.width = startingDim + 'px';
+            image.style.height = startingDim + 'px';
+
+            image.style.marginLeft = randomFloat(0, SCREEN_WIDTH * .975 - startingDim) + 'px';
+            image.style.marginTop = randomFloat(0, SCREEN_HEIGHT * .875 - startingDim) + 'px';
+            document.body.appendChild(image);
+            growShrink(elementId, growthRate, shrinkRate, interval);
+        }
+
+    }
+
+    happyBdayToMeeeee()
+</script>
+
+</html>
