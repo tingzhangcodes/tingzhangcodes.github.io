@@ -12,23 +12,39 @@
 
   <body>
     <div class="content">
-      <h1 style="color:#fa5050">TING ZHANG</h1>
+      <h1 class="random-color" style="color:#fa5050">TING ZHANG</h1>
       <img class="image" src="images/me.jpg">
-      <h2><a style="color:#faad50" href="https://github.com/tngzng">programmer</a></h2>
-      <h2><a style="color:#50fa7a" href="https://www.linkedin.com/in/tingzhangcodes">programmer</a></h2>
-      <h2><a style="color:#5053fa" href="https://tngzng.github.io/assets/ting_zhang_cv.pdf">programmer</a></h2>
+      <h2><a class="random-color" style="color:#faad50" href="https://github.com/tngzng">programmer</a></h2>
+      <h2><a class="random-color" style="color:#50fa7a" href="https://www.linkedin.com/in/tingzhangcodes">programmer</a></h2>
+      <h2><a class="random-color" style="color:#5053fa" href="https://tngzng.github.io/assets/ting_zhang_cv.pdf">programmer</a></h2>
     </div>
   </body>
+
+  <script>
+    const RED = "#fa5050";
+    const ORANGE = "#faad50";
+    const YELLOW = "#fae050";
+    const GREEN = "#50fa7a";
+    const BLUE = "#5053fa";
+    const PURPLE = "#a550fa";
+
+    function assignColors() {
+      colors = [RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE]
+      elements = document.getElementsByClassName("random-color");
+      var i;
+      for (i = 0; i < elements.length; i++) {
+        color = selectAndRemove(colors);
+        elements[i].style.color = color;
+      }
+    }
+
+    function selectAndRemove(items) {
+      index = Math.floor(Math.random() * items.length);
+      item = items[index];
+      items.splice(index, 1);
+      return item;
+    }
+
+    assignColors()
+  </script>
 </html>
-
-<!--red #fa5050-->
-
-<!--orange #faad50-->
-
-<!--yellow #fae050-->
-
-<!--green #50fa7a-->
-
-<!--blue #5053fa-->
-
-<!--purple #a550fa-->
