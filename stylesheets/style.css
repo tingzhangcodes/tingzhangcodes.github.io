@@ -18,6 +18,10 @@ body {
 }
 
 @media only screen and (max-width: 1000px) {
+    body {
+        font-size: 22px;
+    }
+
     .content {
         width: 80%;
     }
