@@ -1,6 +1,7 @@
 body {
     background-color: #050505;
-    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-family: "Comic Sans MS", "Dosis", sans-serif;
+    font-weight: bold;
 }
 
 .content {
