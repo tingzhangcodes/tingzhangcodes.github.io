@@ -60,8 +60,8 @@
 
       var layer = new Konva.Layer();
 
-      function dropShape(event) {
-        var box = new Konva.Rect({
+      function makeRandomBox(x, y) {
+        return new Konva.Rect({
           x: event.clientX,
           y: event.clientY,
           width: getRandomInt(100, 300),
@@ -69,16 +69,43 @@
           fill: getRandomElement(COLORS),
           draggable: true,
         });
+      }
+
+      function makeRandomPolygon(x, y) {
+        return new Konva.RegularPolygon({
+          x: event.clientX,
+          y: event.clientY,
+          sides: 6,
+          radius: getRandomInt(100, 200),
+          fill: getRandomElement(COLORS),
+          draggable: true,
+        });
+      }
+
+      function makeRandomCircle(x, y) {
+        return new Konva.Circle({
+          x: event.clientX,
+          y: event.clientY,
+          radius: getRandomInt(100, 200),
+          fill: getRandomElement(COLORS),
+          draggable: true,
+        });
+      }
+
+      function dropShape(event) {
+        var shapeFuncs = [makeRandomPolygon, makeRandomBox, makeRandomCircle];
+        var shapeFunc = getRandomElement(shapeFuncs);
+        var shape = shapeFunc(event.clientX, event.clientY)
 
         // add cursor styling
-        box.on('mouseover', function () {
+        shape.on('mouseover', function () {
           document.body.style.cursor = 'pointer';
         });
-        box.on('mouseout', function () {
+        shape.on('mouseout', function () {
           document.body.style.cursor = 'default';
         });
 
-        layer.add(box);
+        layer.add(shape);
         stage.add(layer);
       }
 
