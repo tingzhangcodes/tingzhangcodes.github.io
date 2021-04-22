@@ -16,10 +16,10 @@
         width: 50%;
       }
       #left {
-        background-color: #fcfbc2;
+        background-color: #f8f8ff;
       }
       #right {
-        background-color: #6abd7e;
+        background-color: #141414;
       }
 
     </style>
@@ -49,21 +49,21 @@
       // LEFT HERE. //
       // // // // // //
 
-      var width = window.innerWidth / 2;
-      var height = window.innerHeight;
+      var containerWidth = window.innerWidth / 2;
+      var containerHeight = window.innerHeight;
 
-      var stage = new Konva.Stage({
+      var leftStage = new Konva.Stage({
         container: 'left',
-        width: width,
-        height: height,
+        width: containerWidth,
+        height: containerHeight,
       });
 
-      var layer = new Konva.Layer();
+      var leftLayer = new Konva.Layer();
 
       function makeRandomBox(x, y) {
         return new Konva.Rect({
-          x: event.clientX,
-          y: event.clientY,
+          x: x,
+          y: y,
           width: getRandomInt(100, 300),
           height: getRandomInt(100, 300),
           fill: getRandomElement(COLORS),
@@ -73,8 +73,8 @@
 
       function makeRandomPolygon(x, y) {
         return new Konva.RegularPolygon({
-          x: event.clientX,
-          y: event.clientY,
+          x: x,
+          y: y,
           sides: 6,
           radius: getRandomInt(100, 200),
           fill: getRandomElement(COLORS),
@@ -84,18 +84,18 @@
 
       function makeRandomCircle(x, y) {
         return new Konva.Circle({
-          x: event.clientX,
-          y: event.clientY,
+          x: x,
+          y: y,
           radius: getRandomInt(100, 200),
           fill: getRandomElement(COLORS),
           draggable: true,
         });
       }
 
-      function dropShape(event) {
+      function makeShape(x, y ) {
         var shapeFuncs = [makeRandomPolygon, makeRandomBox, makeRandomCircle];
         var shapeFunc = getRandomElement(shapeFuncs);
-        var shape = shapeFunc(event.clientX, event.clientY)
+        var shape = shapeFunc(x, y)
 
         // add cursor styling
         shape.on('mouseover', function () {
@@ -105,52 +105,42 @@
           document.body.style.cursor = 'default';
         });
 
-        layer.add(shape);
-        stage.add(layer);
+        return shape;
+      }
+
+      function dropLeftShape(event) {
+        var shape = makeShape(event.clientX, event.clientY);
+        leftLayer.add(shape);
+        leftStage.add(leftLayer);
       }
 
       document.getElementById('left').addEventListener(
         'dblclick',
-        dropShape,
+        dropLeftShape,
       );
 
       // // // // // //
       // RIGHT HERE. //
       // // // // // //
-      // var width = window.innerWidth / 2;
-      // var height = window.innerHeight;
+      var rightStage = new Konva.Stage({
+        container: 'right',
+        width: containerWidth,
+        height: containerHeight,
+      });
 
-      // var stage = new Konva.Stage({
-      //   container: 'right',
-      //   width: width,
-      //   height: height,
-      // });
+      var rightLayer = new Konva.Layer();
 
-      // var layer = new Konva.Layer();
-      // var rectX = stage.width() / 2 - 50;
-      // var rectY = stage.height() / 2 - 25;
 
-      // var box = new Konva.Rect({
-      //   x: rectX,
-      //   y: rectY,
-      //   width: 100,
-      //   height: 50,
-      //   fill: '#00D2FF',
-      //   stroke: 'black',
-      //   strokeWidth: 4,
-      //   draggable: true,
-      // });
+      function dropRightShape(event) {
+        var shape = makeShape(event.clientX - containerWidth, event.clientY);
+        rightLayer.add(shape);
+        rightStage.add(rightLayer);
+      }
 
-      // // add cursor styling
-      // box.on('mouseover', function () {
-      //   document.body.style.cursor = 'pointer';
-      // });
-      // box.on('mouseout', function () {
-      //   document.body.style.cursor = 'default';
-      // });
-
-      // layer.add(box);
-      // stage.add(layer);
+      document.getElementById('right').addEventListener(
+        'dblclick',
+        dropRightShape,
+      );
     </script>
   </body>
 </html>
