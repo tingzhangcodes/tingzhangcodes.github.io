@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/konva@7.2.5/konva.min.js"></script>
+    <meta charset="utf-8" />
+    <title>dusen n' dusen drawing</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #f8f8ff;
+        display: flex;
+      }
+      .canvas {
+        width: 50%;
+      }
+      #left {
+        background-color: #ad3499;
+      }
+      #right {
+        background-color: #6abd7e;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="canvas" id="left"></div>
+    <div class="canvas" id="right"></div>
+    <script>
+      // // // // // //
+      // LEFT HERE. //
+      // // // // // //
+
+      var width = window.innerWidth / 2;
+      var height = window.innerHeight;
+
+      var stage = new Konva.Stage({
+        container: 'left',
+        width: width,
+        height: height,
+      });
+
+      var layer = new Konva.Layer();
+      var rectX = stage.width() / 2 - 50;
+      var rectY = stage.height() / 2 - 25;
+
+      var box = new Konva.Rect({
+        x: rectX,
+        y: rectY,
+        width: 100,
+        height: 50,
+        fill: '#00D2FF',
+        stroke: 'black',
+        strokeWidth: 4,
+        draggable: true,
+      });
+
+      // add cursor styling
+      box.on('mouseover', function () {
+        document.body.style.cursor = 'pointer';
+      });
+      box.on('mouseout', function () {
+        document.body.style.cursor = 'default';
+      });
+
+      layer.add(box);
+      stage.add(layer);
+
+      // // // // // //
+      // RIGHT HERE. //
+      // // // // // //
+      var width = window.innerWidth / 2;
+      var height = window.innerHeight;
+
+      var stage = new Konva.Stage({
+        container: 'right',
+        width: width,
+        height: height,
+      });
+
+      var layer = new Konva.Layer();
+      var rectX = stage.width() / 2 - 50;
+      var rectY = stage.height() / 2 - 25;
+
+      var box = new Konva.Rect({
+        x: rectX,
+        y: rectY,
+        width: 100,
+        height: 50,
+        fill: '#00D2FF',
+        stroke: 'black',
+        strokeWidth: 4,
+        draggable: true,
+      });
+
+      // add cursor styling
+      box.on('mouseover', function () {
+        document.body.style.cursor = 'pointer';
+      });
+      box.on('mouseout', function () {
+        document.body.style.cursor = 'default';
+      });
+
+      layer.add(box);
+      stage.add(layer);
+    </script>
+  </body>
+</html>
