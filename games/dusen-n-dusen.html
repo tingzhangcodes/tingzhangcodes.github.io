@@ -16,7 +16,7 @@
         width: 50%;
       }
       #left {
-        background-color: #ad3499;
+        background-color: #fcfbc2;
       }
       #right {
         background-color: #6abd7e;
@@ -28,11 +28,21 @@
     <div class="canvas" id="left"></div>
     <div class="canvas" id="right"></div>
     <script>
+      const ORANGE = "#fca503";
+      const BLUE = "#4287f5";
+      const GREEN = "#32a852";
+      const MAGENTA = "#ad3499";
+      const COLORS = [ORANGE, BLUE, GREEN, MAGENTA];
+
       function getRandomInt(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
         //The maximum is exclusive and the minimum is inclusive
         return Math.floor(Math.random() * (max - min) + min);
+      }
+
+      function getRandomElement(array) {
+        return array[Math.floor(Math.random() * array.length)];
       }
 
       // // // // // //
@@ -51,18 +61,12 @@
       var layer = new Konva.Layer();
 
       function dropShape(event) {
-        var width = getRandomInt(100, 300);
-        var height = getRandomInt(100, 300);
-
-        var rectX = event.clientX;
-        var rectY = event.clientY;
-
         var box = new Konva.Rect({
-          x: rectX,
-          y: rectY,
-          width: width,
-          height: height,
-          fill: '#00D2FF',
+          x: event.clientX,
+          y: event.clientY,
+          width: getRandomInt(100, 300),
+          height: getRandomInt(100, 300),
+          fill: getRandomElement(COLORS),
           draggable: true,
         });
 
