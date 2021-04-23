@@ -45,21 +45,6 @@
         return array[Math.floor(Math.random() * array.length)];
       }
 
-      // // // // // //
-      // LEFT HERE. //
-      // // // // // //
-
-      var containerWidth = window.innerWidth / 2;
-      var containerHeight = window.innerHeight;
-
-      var leftStage = new Konva.Stage({
-        container: 'left',
-        width: containerWidth,
-        height: containerHeight,
-      });
-
-      var leftLayer = new Konva.Layer();
-
       function makeRandomBox(x, y) {
         return new Konva.Rect({
           x: x,
@@ -108,6 +93,21 @@
         return shape;
       }
 
+      // // // // // //
+      // LEFT HERE. //
+      // // // // // //
+
+      var CONTAINER_WIDTH = window.innerWidth / 2;
+      var CONTAINER_HEIGHT = window.innerHeight;
+
+      var leftStage = new Konva.Stage({
+        container: 'left',
+        width: CONTAINER_WIDTH,
+        height: CONTAINER_HEIGHT,
+      });
+
+      var leftLayer = new Konva.Layer();
+
       function dropLeftShape(event) {
         var shape = makeShape(event.clientX, event.clientY);
         leftLayer.add(shape);
@@ -124,15 +124,15 @@
       // // // // // //
       var rightStage = new Konva.Stage({
         container: 'right',
-        width: containerWidth,
-        height: containerHeight,
+        width: CONTAINER_WIDTH,
+        height: CONTAINER_HEIGHT,
       });
 
       var rightLayer = new Konva.Layer();
 
 
       function dropRightShape(event) {
-        var shape = makeShape(event.clientX - containerWidth, event.clientY);
+        var shape = makeShape(event.clientX - CONTAINER_WIDTH, event.clientY);
         rightLayer.add(shape);
         rightStage.add(rightLayer);
       }
