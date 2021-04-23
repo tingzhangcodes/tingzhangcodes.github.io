@@ -146,42 +146,54 @@
       // DOWNLOAD HERE. //
       // // // // // // //
 
-      // https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas
-      function splice() {
-        var tempCanvas = document.createElement("canvas")
-        var tempCtx = tempCanvas.getContext("2d")
-
-        var canvas_list = document.getElementsByTagName("canvas")
-        var leftCanvas = canvas_list[0]
-        var leftCtx = leftCanvas.getContext("2d")
-
-        var rightCanvas = canvas_list[1]
-        var rightCtx = rightCanvas.getContext("2d")
-
-        var imageData = leftCtx.getImageData(0, 0, 50, CONTAINER_HEIGHT);
-        tempCtx.putImageData(imageData, 0, 0);
-
-        var imageData = rightCtx.getImageData(50, 0, 50, CONTAINER_HEIGHT);
-        tempCtx.putImageData(imageData, 50, 0);
-
-        var imageData = leftCtx.getImageData(100, 0, 50, CONTAINER_HEIGHT);
-        tempCtx.putImageData(imageData, 100, 0);
-
-        var imageData = rightCtx.getImageData(150, 0, 50, CONTAINER_HEIGHT);
-        tempCtx.putImageData(imageData, 150, 0);
-
-        var img = tempCanvas.toDataURL("image/png");
-        document.write('<a href="'+img+'"><img src="'+img+'"/></a>');
+      // function from https://stackoverflow.com/a/15832662/512042
+      function downloadURI(uri, name) {
+        var link = document.createElement('a');
+        link.download = name;
+        link.href = uri;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        delete link;
       }
 
-      function spliceAndSave(event) {
+      // https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas
+      function spliceAndSave() {
+        var tempCanvas = document.createElement("canvas")
+        tempCanvas.width = CONTAINER_WIDTH;
+        tempCanvas.height = CONTAINER_HEIGHT;
+        var tempCtx = tempCanvas.getContext("2d");
+        tempCtx.fillStyle = "blue";
+        tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+
+        var canvasList = document.getElementsByTagName("canvas");
+        var leftCanvas = canvasList[0];
+        var leftCtx = leftCanvas.getContext("2d");
+
+        var rightCanvas = canvasList[1];
+        var rightCtx = rightCanvas.getContext("2d");
+        var ctxList = [leftCtx, rightCtx];
+
+        const step = 25;
+        for (let pixel = 0; pixel < rightCanvas.width; pixel += step) {
+          debugger;
+          var i = (pixel / step) % 2;
+          if (i === 0 ) {
+            var imageData = rightCtx.getImageData(pixel, 0, step, rightCanvas.height);
+            leftCtx.putImageData(imageData, pixel, 0);
+          }
+        }
+
+        var dataURL = leftCanvas.toDataURL("image/png");
+        downloadURI(dataURL, 'dusen-n-dusen.png');
+      }
+
+      function handleKeyDown(event) {
         if (event.code === "Space") {
-          splice();
-          // combine();
-          // save();
+          spliceAndSave();
         }
       }
-      document.addEventListener('keydown', spliceAndSave);
+      document.addEventListener('keydown', handleKeyDown);
 
     </script>
   </body>
