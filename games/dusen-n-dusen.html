@@ -115,50 +115,34 @@
       // LEFT HERE. //
       // // // // // //
 
+      class ShapeStage {
+        constructor(container, width, height) {
+          this.stage = new Konva.Stage({
+            container: container,
+            width: width,
+            height: height,
+          });
+          var layer = new Konva.Layer();
+          this.stage.add(layer);
+          this.stage.on('dblclick dbltap', this.dropShape);
+        }
+
+        dropShape(event) {
+          const pointerPosition = this.getStage().getPointerPosition();
+          const x = pointerPosition.x;
+          const y = pointerPosition.y;
+          var shape = makeShape(x, y);
+          var layer = this.getStage().getLayers()[0]
+          layer.add(shape);
+          this.getStage().add(layer);
+        }
+      }
+
       const STAGE_WIDTH = document.getElementById('dark').offsetWidth;
       const STAGE_HEIGHT = document.getElementById('dark').offsetHeight;
 
-      var leftStage = new Konva.Stage({
-        container: 'light',
-        width: STAGE_WIDTH,
-        height: STAGE_HEIGHT,
-      });
-
-      var leftLayer = new Konva.Layer();
-
-      function dropLeftShape(event) {
-        const pointerPosition = leftStage.getPointerPosition();
-        const x = pointerPosition.x;
-        const y = pointerPosition.y;
-        var shape = makeShape(x, y);
-        leftLayer.add(shape);
-        leftStage.add(leftLayer);
-      }
-
-      leftStage.on('dblclick dbltap', dropLeftShape);
-
-      // // // // // //
-      // RIGHT HERE. //
-      // // // // // //
-      var rightStage = new Konva.Stage({
-        container: 'dark',
-        width: STAGE_WIDTH,
-        height: STAGE_HEIGHT,
-      });
-
-      var rightLayer = new Konva.Layer();
-
-
-      function dropRightShape(event) {
-        const pointerPosition = rightStage.getPointerPosition();
-        const x = pointerPosition.x;
-        const y = pointerPosition.y;
-        var shape = makeShape(x, y);
-        rightLayer.add(shape);
-        rightStage.add(rightLayer);
-      }
-
-      rightStage.on('dblclick dbltap', dropRightShape);
+      var lightStage = new ShapeStage('light', STAGE_WIDTH, STAGE_HEIGHT);
+      var darkStage = new ShapeStage('dark', STAGE_WIDTH, STAGE_HEIGHT);
 
       // // // // // // //
       // DOWNLOAD HERE. //
