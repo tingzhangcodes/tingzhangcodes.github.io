@@ -15,18 +15,18 @@
       .canvas {
         width: 50%;
       }
-      #left {
+      #light {
         background-color: #f8f8ff;
       }
-      #right {
+      #dark {
         background-color: #141414;
       }
 
     </style>
   </head>
   <body>
-    <div class="canvas" id="left"></div>
-    <div class="canvas" id="right"></div>
+    <div class="canvas" id="light"></div>
+    <div class="canvas" id="dark"></div>
     <script>
       const ORANGE = "#fca503";
       const BLUE = "#4287f5";
@@ -101,7 +101,7 @@
       var CONTAINER_HEIGHT = window.innerHeight;
 
       var leftStage = new Konva.Stage({
-        container: 'left',
+        container: 'light',
         width: CONTAINER_WIDTH,
         height: CONTAINER_HEIGHT,
       });
@@ -123,7 +123,7 @@
       // RIGHT HERE. //
       // // // // // //
       var rightStage = new Konva.Stage({
-        container: 'right',
+        container: 'dark',
         width: CONTAINER_WIDTH,
         height: CONTAINER_HEIGHT,
       });
