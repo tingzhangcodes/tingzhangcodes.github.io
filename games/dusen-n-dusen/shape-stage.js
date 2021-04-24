@@ -6,14 +6,41 @@ const COLORS = [ORANGE, BLUE, GREEN, MAGENTA];
 
 
 class ShapeStage {
-  constructor(container, width, height) {
+  constructor(container, width, height, displayIcons=false, callback=null) {
     this.stage = new Konva.Stage({
       container: container,
       width: width,
       height: height,
     });
-    var layer = new Konva.Layer();
-    this.stage.add(layer);
+    var shapeLayer = new Konva.Layer();
+    this.stage.add(shapeLayer);
+    shapeLayer.zIndex(0);
+
+    if (displayIcons === true) {
+      var iconLayer = new Konva.Layer();
+      const iconFile = 'arrow-alt-circle-down-solid.svg';
+      const path = 'https://tngzng.github.io/games/dusen-n-dusen/assets/';
+      Konva.Image.fromURL(`${path}/${iconFile}`, (image) => {
+        const dimension = 48;
+        const padding = 12;
+        image.setWidth(dimension);
+        image.setHeight(dimension);
+        image.setY(padding);
+        image.setX(width - image.width() - padding);
+        // add cursor styling
+        image.on('mouseover', function () {
+          document.body.style.cursor = 'pointer';
+        });
+        image.on('mouseout', function () {
+          document.body.style.cursor = 'default';
+        });
+        image.on('click tap', callback)
+        iconLayer.add(image);
+        this.stage.add(iconLayer);
+        iconLayer.zIndex(1);
+      })
+
+    }
     this.stage.on('dblclick dbltap', this.dropShape);
   }
 
@@ -25,6 +52,7 @@ class ShapeStage {
     var layer = this.getStage().getLayers()[0]
     layer.add(shape);
     this.getStage().add(layer);
+    layer.zIndex(0);
   }
 }
 
