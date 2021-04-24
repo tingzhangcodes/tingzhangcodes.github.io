@@ -109,15 +109,15 @@
       var leftLayer = new Konva.Layer();
 
       function dropLeftShape(event) {
-        var shape = makeShape(event.clientX, event.clientY);
+        const pointerPosition = leftStage.getPointerPosition();
+        const x = pointerPosition.x;
+        const y = pointerPosition.y;
+        var shape = makeShape(x, y);
         leftLayer.add(shape);
         leftStage.add(leftLayer);
       }
 
-      document.getElementById('left').addEventListener(
-        'dblclick',
-        dropLeftShape,
-      );
+      leftStage.on('dblclick dbltap', dropLeftShape);
 
       // // // // // //
       // RIGHT HERE. //
@@ -132,15 +132,15 @@
 
 
       function dropRightShape(event) {
-        var shape = makeShape(event.clientX - CONTAINER_WIDTH, event.clientY);
+        const pointerPosition = rightStage.getPointerPosition();
+        const x = pointerPosition.x;
+        const y = pointerPosition.y;
+        var shape = makeShape(x, y);
         rightLayer.add(shape);
         rightStage.add(rightLayer);
       }
 
-      document.getElementById('right').addEventListener(
-        'dblclick',
-        dropRightShape,
-      );
+      rightStage.on('dblclick dbltap', dropRightShape);
 
       // // // // // // //
       // DOWNLOAD HERE. //
