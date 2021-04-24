@@ -115,13 +115,13 @@
       // LEFT HERE. //
       // // // // // //
 
-      var CONTAINER_WIDTH = document.getElementById('dark').offsetWidth;
-      var CONTAINER_HEIGHT = document.getElementById('dark').offsetHeight;
+      const STAGE_WIDTH = document.getElementById('dark').offsetWidth;
+      const STAGE_HEIGHT = document.getElementById('dark').offsetHeight;
 
       var leftStage = new Konva.Stage({
         container: 'light',
-        width: CONTAINER_WIDTH,
-        height: CONTAINER_HEIGHT,
+        width: STAGE_WIDTH,
+        height: STAGE_HEIGHT,
       });
 
       var leftLayer = new Konva.Layer();
@@ -142,8 +142,8 @@
       // // // // // //
       var rightStage = new Konva.Stage({
         container: 'dark',
-        width: CONTAINER_WIDTH,
-        height: CONTAINER_HEIGHT,
+        width: STAGE_WIDTH,
+        height: STAGE_HEIGHT,
       });
 
       var rightLayer = new Konva.Layer();
