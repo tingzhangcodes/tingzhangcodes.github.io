@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="https://unpkg.com/konva@7.2.5/konva.min.js"></script>
+    <script src="shape-stage.js"></script>
+    <script src="shape-download.js"></script>
+    <meta charset="utf-8" />
+    <title>dusen n' dusen drawing</title>
+    <link rel="stylesheet" href="shape-style.css">
+  </head>
+  <body>
+    <div class="container">
+        <div class="canvas" id="light"></div>
+        <div class="canvas" id="dark"></div>
+    </div>
+    <script>
+      const STAGE_WIDTH = document.getElementById('dark').offsetWidth;
+      const STAGE_HEIGHT = document.getElementById('dark').offsetHeight;
+
+      new ShapeStage('light', STAGE_WIDTH, STAGE_HEIGHT);
+      new ShapeStage('dark', STAGE_WIDTH, STAGE_HEIGHT);
+
+      document.addEventListener('keydown', downloadShapes);
+
+    </script>
+  </body>
+</html>
