@@ -21,11 +21,13 @@ class ShapeStage {
       const iconFile = 'arrow-alt-circle-down-solid.svg';
       const path = 'https://tngzng.github.io/games/dusen-n-dusen/assets/';
       Konva.Image.fromURL(`${path}/${iconFile}`, (image) => {
+        const desktopStyling = (window.innerWidth >= 768);
         const dimension = 48;
         const padding = 12;
         image.setWidth(dimension);
         image.setHeight(dimension);
-        image.setY(padding);
+        const iconY = desktopStyling ? padding : height - image.height() - padding;
+        image.setY(iconY);
         image.setX(width - image.width() - padding);
         // add cursor styling
         image.on('mouseover', function () {
