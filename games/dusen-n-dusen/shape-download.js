@@ -26,7 +26,7 @@ function cloneCanvas(oldCanvas) {
   return newCanvas;
 }
 
-function spliceAndSave() {
+function downloadShapes() {
   var canvasList = document.getElementsByTagName("canvas");
   var leftCanvas = canvasList[0];
   var leftCtx = leftCanvas.getContext("2d");
@@ -38,6 +38,7 @@ function spliceAndSave() {
 
   const step = 25;
   for (let pixel = 0; pixel < tempCanvas.width; pixel += step) {
+    // i will toggle from 0 to 1 and back with each iteration
     var i = (pixel / step) % 2;
     // https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas
     var imageData = ctxList[i].getImageData(pixel, 0, step, tempCanvas.height);
@@ -46,10 +47,4 @@ function spliceAndSave() {
 
   var dataURL = tempCanvas.toDataURL("image/png");
   downloadURI(dataURL, 'dusen-n-dusen.png');
-}
-
-function downloadShapes(event) {
-  if (event.code === "Space") {
-    spliceAndSave();
-  }
 }
