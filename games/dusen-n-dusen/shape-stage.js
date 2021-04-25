@@ -76,7 +76,7 @@ function toggleInfo(event) {
     const infoText = [
       "Tap twice for new shape.",
       "Drag to move.",
-      "Hit download to save.",
+      "Download to save.",
     ]
     var text = new Konva.Text({
       text: infoText.join('\n'),
