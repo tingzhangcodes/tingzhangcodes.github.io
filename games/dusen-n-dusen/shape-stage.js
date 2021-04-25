@@ -34,19 +34,17 @@ class ShapeStage {
     this.addIcon(infoIcon, stageHeight, stageWidth, toggleInfo, 2)
   }
 
-  addIcon(iconFile, stageHeight, stageWidth, callback, rightPadMultiplier=1) {
+  addIcon(iconFile, stageHeight, stageWidth, callback, padMultiplier=1) {
     const path = 'https://tngzng.github.io/games/dusen-n-dusen/assets/';
-    const desktopStyling = (window.innerWidth >= 768);
     const dimension = 48;
     const padding = 12;
 
     Konva.Image.fromURL(`${path}/${iconFile}`, (image) => {
       image.setWidth(dimension);
       image.setHeight(dimension);
-      // const iconY = desktopStyling ? padding : stageHeight - image.height() - padding;
-      const iconY = padding;
+      const iconY = stageHeight - image.height() * (1 + padMultiplier) - padding * padMultiplier;
       image.setY(iconY);
-      image.setX(stageWidth - image.width() * rightPadMultiplier - padding * rightPadMultiplier);
+      image.setX(stageWidth - image.width() - padding);
       addCursorStyling(image);
       image.on('click tap', callback)
       this.iconLayer.add(image);
