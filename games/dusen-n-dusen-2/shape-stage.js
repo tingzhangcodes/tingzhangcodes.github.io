@@ -61,7 +61,7 @@ class ShapeStage {
 
   showNextIcon(nextStage) {
     // https://fontawesome.com/icons/arrow-alt-circle-right
-    const iconFile = 'arrow-alt-circle-right-solid.svg';
+    const iconFile = 'arrow-right-solid.svg';
     var callback = this.getShowStageCallback(nextStage);
     this.showIcon(iconFile, callback, 'right')
   }
@@ -69,20 +69,20 @@ class ShapeStage {
 
   showPrevIcon(prevStage) {
     // https://fontawesome.com/icons/arrow-alt-circle-left
-    const iconFile = 'arrow-alt-circle-left-solid.svg';
+    const iconFile = 'arrow-left-solid.svg';
     var callback = this.getShowStageCallback(prevStage);
     this.showIcon(iconFile, callback, 'left')
   }
 
   showDownloadIcon() {
     // https://fontawesome.com/icons/arrow-alt-circle-down
-    const iconFile = 'arrow-alt-circle-down-solid.svg';
+    const iconFile = 'arrow-down-solid.svg';
     this.showIcon(iconFile, downloadShapes, 'right')
   }
 
 
   showIcon(iconFile, callback, location='right-center') {
-    const path = 'https://tngzng.github.io/games/dusen-n-dusen/assets/';
+    const path = 'https://tngzng.github.io/games/dusen-n-dusen-2/assets/';
     const dimension = 48;
     const padding = 12;
 
