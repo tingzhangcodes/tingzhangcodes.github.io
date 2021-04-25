@@ -27,20 +27,12 @@ class ShapeStage {
   }
 
   addIcons(stageHeight, stageWidth, downloadCallback) {
-    const desktopStyling = (window.innerWidth >= 768);
     // https://fontawesome.com/icons/arrow-alt-circle-down?style=solid
     const downloadIcon = 'arrow-alt-circle-down-solid.svg';
     // https://fontawesome.com/icons/info-circle?style=solid
     const infoIcon = 'info-circle-solid.svg';
-    if (desktopStyling === true) {
-      this.addIcon(downloadIcon, PADDING, PADDING, downloadCallback)
-      this.addIcon(infoIcon, PADDING * 2 + ICON_DIMENSION, PADDING, toggleInfo)
-    } else {
-      var downloadX = stageWidth - ICON_DIMENSION * 2 - PADDING * 2;
-      this.addIcon(downloadIcon, downloadX, PADDING, downloadCallback)
-      var infoX = stageWidth - ICON_DIMENSION - PADDING;
-      this.addIcon(infoIcon, infoX, PADDING, toggleInfo)
-    }
+    this.addIcon(downloadIcon, PADDING, PADDING, downloadCallback)
+    this.addIcon(infoIcon, PADDING * 2 + ICON_DIMENSION, PADDING, toggleInfo)
   }
 
   addIcon(iconFile, x, y, callback) {
