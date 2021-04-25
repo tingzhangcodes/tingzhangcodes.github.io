@@ -160,6 +160,14 @@ function showStage3(event) {
 }
 
 
+// https://stackoverflow.com/questions/6195729/most-efficient-way-to-prepend-a-value-to-an-array
+function prepend(value, array) {
+  var newArray = array.slice();
+  newArray.unshift(value);
+  return newArray;
+}
+
+
 function getInfoText(stagId) {
   const editingInfo =  [
     "Tap twice to make a shape.",
@@ -168,12 +176,12 @@ function getInfoText(stagId) {
   ];
   switch (stagId) {
     case STAGE_1_ID:
-      return editingInfo;
+      return prepend("Make your first drawing:\n", editingInfo);
     case STAGE_2_ID:
-      return editingInfo;
+      return prepend("Make your second drawing:\n", editingInfo);
     case STAGE_3_ID:
       return [
-        "Your masterpiece is done!",
+        "Your masterpiece is done!\n",
         "Hit download to save.",
       ];
   }
