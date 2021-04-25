@@ -50,9 +50,9 @@ class ShapeStage {
     Konva.Image.fromURL(`${path}/${iconFile}`, (image) => {
       image.setWidth(dimension);
       image.setHeight(dimension);
-      const iconY = this.stage.height() - image.height() * (2 + padMultiplier) - padding * padMultiplier;
-      image.setY(iconY);
-      image.setX(this.stage.width() - image.width() - padding);
+      image.setY(padding);
+      const iconX = this.stage.width() - image.width() * (2 + padMultiplier) - padding * padMultiplier;
+      image.setX(iconX);
       addCursorStyling(image);
       image.on('click tap', callback)
       this.iconLayer.add(image);
