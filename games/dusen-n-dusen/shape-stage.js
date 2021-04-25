@@ -42,7 +42,7 @@ class ShapeStage {
     Konva.Image.fromURL(`${path}/${iconFile}`, (image) => {
       image.setWidth(dimension);
       image.setHeight(dimension);
-      const iconY = stageHeight - image.height() * (1 + padMultiplier) - padding * padMultiplier;
+      const iconY = stageHeight - image.height() * (2 + padMultiplier) - padding * padMultiplier;
       image.setY(iconY);
       image.setX(stageWidth - image.width() - padding);
       addCursorStyling(image);
