@@ -3,6 +3,9 @@ const BLUE = "#4287f5";
 const GREEN = "#32a852";
 const MAGENTA = "#ad3499";
 const COLORS = [ORANGE, BLUE, GREEN, MAGENTA];
+const STAGE_1_ID = "stage-1";
+const STAGE_2_ID = "stage-2";
+const STAGE_3_ID = "stage-3";
 
 
 class ShapeStage {
@@ -44,17 +47,39 @@ class ShapeStage {
   }
 
 
-  showNextIcon() {
+  showNextIcon(nextStage) {
     // https://fontawesome.com/icons/arrow-alt-circle-right
     const iconFile = 'arrow-alt-circle-right-solid.svg';
-    this.showIcon(iconFile, toggleInfo, 'right')
+    switch (nextStage) {
+      case STAGE_1_ID:
+        var callback = showStage1
+        break
+      case STAGE_2_ID:
+        var callback = showStage2
+        break
+      case STAGE_3_ID:
+        var callback = showStage3
+        break
+    }
+    this.showIcon(iconFile, callback, 'right')
   }
 
 
-  showPrevIcon() {
+  showPrevIcon(prevStage) {
     // https://fontawesome.com/icons/arrow-alt-circle-left
     const iconFile = 'arrow-alt-circle-left-solid.svg';
-    this.showIcon(iconFile, toggleInfo, 'left')
+    switch (prevStage) {
+      case STAGE_1_ID:
+        var callback = showStage1
+        break
+      case STAGE_2_ID:
+        var callback = showStage2
+        break
+      case STAGE_3_ID:
+        var callback = showStage3
+        break
+    }
+    this.showIcon(iconFile, callback, 'left')
   }
 
   showDownloadIcon() {
@@ -105,6 +130,36 @@ class ShapeStage {
     stage.add(layer);
     layer.zIndex(0);
   }
+}
+
+
+function showStage1(event) {
+  var stage1 = document.getElementById(STAGE_1_ID);
+  stage1.style.display = "block";
+  var stage2 = document.getElementById(STAGE_2_ID);
+  stage2.style.display = "none";
+  var stage3 = document.getElementById(STAGE_3_ID);
+  stage3.style.display = "none";
+}
+
+
+function showStage2(event) {
+  var stage1 = document.getElementById(STAGE_1_ID);
+  stage1.style.display = "none";
+  var stage2 = document.getElementById(STAGE_2_ID);
+  stage2.style.display = "block";
+  var stage3 = document.getElementById(STAGE_3_ID);
+  stage3.style.display = "none";
+}
+
+
+function showStage3(event) {
+  var stage1 = document.getElementById(STAGE_1_ID);
+  stage1.style.display = "none";
+  var stage2 = document.getElementById(STAGE_2_ID);
+  stage2.style.display = "none";
+  var stage3 = document.getElementById(STAGE_3_ID);
+  stage3.style.display = "block";
 }
 
 
