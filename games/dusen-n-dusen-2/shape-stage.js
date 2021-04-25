@@ -13,29 +13,36 @@ class ShapeStage {
       height: window.innerHeight,
     });
     this.stage.id(stageId)
+
     this.shapeLayer = new Konva.Layer();
     this.stage.add(this.shapeLayer);
     this.shapeLayer.zIndex(0);
     this.shapeLayer.id('shape-layer');
-    // if (displayIcons === true) {
-    //   this.iconLayer = new Konva.Layer();
-    //   this.stage.add(this.iconLayer);
-    //   this.iconLayer.id('icon-layer');
-    //   this.addIcons(height, width, downloadCallback);
-    // }
+
+    this.iconLayer = new Konva.Layer();
+    this.stage.add(this.iconLayer);
+    this.iconLayer.zIndex(1);
+    this.iconLayer.id('icon-layer');
+
     this.stage.on('dblclick dbltap', this.dropShape);
   }
 
-  addIcons(stageHeight, stageWidth, downloadCallback) {
-    // https://fontawesome.com/icons/arrow-alt-circle-down?style=solid
-    const downloadIcon = 'arrow-alt-circle-down-solid.svg';
-    this.addIcon(downloadIcon, stageHeight, stageWidth, downloadCallback)
+  showInfoIcon() {
     // https://fontawesome.com/icons/info-circle?style=solid
     const infoIcon = 'info-circle-solid.svg';
-    this.addIcon(infoIcon, stageHeight, stageWidth, toggleInfo, 2)
+    this.showIcon(infoIcon, toggleInfo)
   }
 
-  addIcon(iconFile, stageHeight, stageWidth, callback, padMultiplier=1) {
+  // addIcons(stageHeight, stageWidth, downloadCallback) {
+  //   // https://fontawesome.com/icons/arrow-alt-circle-down?style=solid
+  //   const downloadIcon = 'arrow-alt-circle-down-solid.svg';
+  //   this.addIcon(downloadIcon, stageHeight, stageWidth, downloadCallback)
+  //   // https://fontawesome.com/icons/info-circle?style=solid
+  //   const infoIcon = 'info-circle-solid.svg';
+  //   this.addIcon(infoIcon, stageHeight, stageWidth, toggleInfo, 2)
+  // }
+
+  showIcon(iconFile, callback, padMultiplier=1) {
     const path = 'https://tngzng.github.io/games/dusen-n-dusen/assets/';
     const dimension = 36;
     const padding = 12;
@@ -43,9 +50,9 @@ class ShapeStage {
     Konva.Image.fromURL(`${path}/${iconFile}`, (image) => {
       image.setWidth(dimension);
       image.setHeight(dimension);
-      const iconY = stageHeight - image.height() * (2 + padMultiplier) - padding * padMultiplier;
+      const iconY = this.stage.height() - image.height() * (2 + padMultiplier) - padding * padMultiplier;
       image.setY(iconY);
-      image.setX(stageWidth - image.width() - padding);
+      image.setX(this.stage.width() - image.width() - padding);
       addCursorStyling(image);
       image.on('click tap', callback)
       this.iconLayer.add(image);
