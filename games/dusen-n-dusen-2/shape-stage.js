@@ -43,9 +43,9 @@ class ShapeStage {
 
 
   showInfoIcon() {
-    // from https://fontawesome.com/icons
-    const iconFile = 'info-solid.svg';
-    this.showIcon(iconFile, toggleInfo, 'right-center', 44)
+    // https://fontawesome.com/icons/info-circle?style=solid
+    const iconFile = 'info-circle-solid.svg';
+    this.showIcon(iconFile, toggleInfo, 'right-center')
   }
 
   getShowStageCallback(stage) {
@@ -60,43 +60,42 @@ class ShapeStage {
   }
 
   showNextIcon(nextStage) {
-    // from https://fontawesome.com/icons
-    const iconFile = 'arrow-right-solid.svg';
+    // https://fontawesome.com/icons/arrow-alt-circle-right
+    const iconFile = 'arrow-alt-circle-right-solid.svg';
     var callback = this.getShowStageCallback(nextStage);
     this.showIcon(iconFile, callback, 'right')
   }
 
 
   showPrevIcon(prevStage) {
-    // from https://fontawesome.com/icons
-    const iconFile = 'arrow-left-solid.svg';
+    // https://fontawesome.com/icons/arrow-alt-circle-left
+    const iconFile = 'arrow-alt-circle-left-solid.svg';
     var callback = this.getShowStageCallback(prevStage);
     this.showIcon(iconFile, callback, 'left')
   }
 
-
   showDownloadIcon() {
-    // from https://fontawesome.com/icons
-    const iconFile = 'arrow-down-solid.svg';
+    // https://fontawesome.com/icons/arrow-alt-circle-down
+    const iconFile = 'arrow-alt-circle-down-solid.svg';
     this.showIcon(iconFile, downloadShapes, 'right')
   }
 
 
-  showIcon(iconFile, callback, location='right-center', iconHeight=48) {
-    const path = 'https://tngzng.github.io/games/dusen-n-dusen-2/assets';
+  showIcon(iconFile, callback, location='right-center') {
+    const path = 'https://tngzng.github.io/games/dusen-n-dusen/assets/';
+    const dimension = 48;
     const padding = 12;
 
     Konva.Image.fromURL(`${path}/${iconFile}`, (image) => {
-      const iconWidth = (iconHeight / image.getHeight()) * image.getWidth();
-      image.setWidth(iconWidth);
-      image.setHeight(iconHeight);
+      image.setWidth(dimension);
+      image.setHeight(dimension);
       image.setY(padding);
       switch(location) {
         case 'right':
-          var iconX = this.stage.width() - iconHeight - padding;
+          var iconX = this.stage.width() - image.width() - padding;
           break
         case 'right-center':
-          var iconX = this.stage.width() - iconHeight * 2 - padding * 2;
+          var iconX = this.stage.width() - image.width() * 2 - padding * 2;
           break
         case 'left':
           var iconX = padding
