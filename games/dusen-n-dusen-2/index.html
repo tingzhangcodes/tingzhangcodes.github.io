@@ -10,16 +10,12 @@
     <link rel="stylesheet" href="shape-style.css">
   </head>
   <body>
-    <div class="container">
-        <div class="canvas" id="dark"></div>
-        <div class="canvas" id="light"></div>
-    </div>
+    <div id="container"></div>
     <script>
-      const STAGE_WIDTH = document.getElementById('dark').offsetWidth;
-      const STAGE_HEIGHT = document.getElementById('dark').offsetHeight;
+      var width = window.innerWidth;
+      var height = window.innerHeight;
 
-      new ShapeStage('dark', STAGE_WIDTH, STAGE_HEIGHT);
-      new ShapeStage('light', STAGE_WIDTH, STAGE_HEIGHT, true, downloadShapes);
+      new ShapeStage("container", width, height);
     </script>
   </body>
 </html>
