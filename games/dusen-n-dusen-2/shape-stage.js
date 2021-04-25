@@ -46,21 +46,21 @@ class ShapeStage {
     this.showIcon(iconFile, toggleInfo, 'right-center')
   }
 
+  getShowStageCallback(stage) {
+    switch (stage) {
+      case STAGE_1_ID:
+        return showStage1;
+      case STAGE_2_ID:
+        return showStage2;
+      case STAGE_3_ID:
+        return showStage3;
+    }
+  }
 
   showNextIcon(nextStage) {
     // https://fontawesome.com/icons/arrow-alt-circle-right
     const iconFile = 'arrow-alt-circle-right-solid.svg';
-    switch (nextStage) {
-      case STAGE_1_ID:
-        var callback = showStage1
-        break
-      case STAGE_2_ID:
-        var callback = showStage2
-        break
-      case STAGE_3_ID:
-        var callback = showStage3
-        break
-    }
+    var callback = this.getShowStageCallback(nextStage);
     this.showIcon(iconFile, callback, 'right')
   }
 
@@ -68,17 +68,7 @@ class ShapeStage {
   showPrevIcon(prevStage) {
     // https://fontawesome.com/icons/arrow-alt-circle-left
     const iconFile = 'arrow-alt-circle-left-solid.svg';
-    switch (prevStage) {
-      case STAGE_1_ID:
-        var callback = showStage1
-        break
-      case STAGE_2_ID:
-        var callback = showStage2
-        break
-      case STAGE_3_ID:
-        var callback = showStage3
-        break
-    }
+    var callback = this.getShowStageCallback(prevStage);
     this.showIcon(iconFile, callback, 'left')
   }
 
