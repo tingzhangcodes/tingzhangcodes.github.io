@@ -3,7 +3,8 @@ const BLUE = "#4287f5";
 const GREEN = "#32a852";
 const MAGENTA = "#ad3499";
 const COLORS = [ORANGE, BLUE, GREEN, MAGENTA];
-
+const ICON_DIMENSION = 48;
+const PADDING = 12;
 
 class ShapeStage {
   constructor(container, width, height, displayIcons=false, downloadCallback=null) {
@@ -37,16 +38,13 @@ class ShapeStage {
   addIcon(iconFile, stageHeight, stageWidth, callback, rightPadMultiplier=1) {
     const path = 'https://tngzng.github.io/games/dusen-n-dusen/assets/';
     const desktopStyling = (window.innerWidth >= 768);
-    const dimension = 48;
-    const padding = 12;
 
     Konva.Image.fromURL(`${path}/${iconFile}`, (image) => {
-      image.setWidth(dimension);
-      image.setHeight(dimension);
-      // const iconY = desktopStyling ? padding : stageHeight - image.height() - padding;
-      const iconY = padding;
+      image.setWidth(ICON_DIMENSION);
+      image.setHeight(ICON_DIMENSION);
+      const iconY = PADDING;
       image.setY(iconY);
-      image.setX(stageWidth - image.width() * rightPadMultiplier - padding * rightPadMultiplier);
+      image.setX(stageWidth - image.width() * rightPadMultiplier - PADDING * rightPadMultiplier);
       addCursorStyling(image);
       image.on('click tap', callback)
       this.iconLayer.add(image);
@@ -75,20 +73,21 @@ function toggleInfo(event) {
     this.getStage().add(layer);
     layer.id('info-layer');
     const infoText = [
-      "• Tap twice to drop a shape.",
-      "• Move shapes where you want.",
-      "• Hit download when you're done.",
+      "Tap twice to make a shape.",
+      "Move shapes where you want.",
+      "Hit download to save.",
     ]
-    const padding = 12;
     var text = new Konva.Text({
-      x: 12,
-      y: 12,
       text: infoText.join('\n'),
       fontSize: 18,
       fontStyle: 'bold',
       fontFamily: 'Courier',
       fill: '#141414',
-      width: this.getStage().width() - padding,
+      align: 'center',
+      verticalAlign: 'middle',
+      horizontalAlign: 'middle',
+      height: this.getStage().height(),
+      width: this.getStage().width(),
     });
     layer.add(text);
     this.getStage().add(layer)
