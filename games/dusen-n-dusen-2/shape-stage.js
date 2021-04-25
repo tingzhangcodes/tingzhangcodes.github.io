@@ -81,7 +81,7 @@ class ShapeStage {
 
   showIcon(iconFile, callback, location='right-center') {
     const path = 'https://tngzng.github.io/games/dusen-n-dusen/assets/';
-    const dimension = 36;
+    const dimension = 48;
     const padding = 12;
 
     Konva.Image.fromURL(`${path}/${iconFile}`, (image) => {
