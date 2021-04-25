@@ -74,20 +74,21 @@ function toggleInfo(event) {
     this.getStage().add(layer);
     layer.id('info-layer');
     const infoText = [
-      "Tap twice to drop a shape.",
-      "Drag shapes where you want them.",
-      "Hit download when you're done.",
+      "• Tap twice to drop a shape.",
+      "• Move shapes where you want.",
+      "• Hit download when you're done.",
     ]
-
+    const padding = 12;
     var text = new Konva.Text({
-        x: 12,
-        y: 12,
-        text: infoText.join('\n'),
-        fontSize: 18,
-        fontStyle: 'bold',
-        fontFamily: 'Courier',
-        fill: '#141414',
-      });
+      x: 12,
+      y: 12,
+      text: infoText.join('\n'),
+      fontSize: 18,
+      fontStyle: 'bold',
+      fontFamily: 'Courier',
+      fill: '#141414',
+      width: this.getStage().width() - padding,
+    });
     layer.add(text);
     this.getStage().add(layer)
     layer.zIndex(1);
