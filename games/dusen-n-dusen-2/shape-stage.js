@@ -6,22 +6,23 @@ const COLORS = [ORANGE, BLUE, GREEN, MAGENTA];
 
 
 class ShapeStage {
-  constructor(container, width, height, displayIcons=false, downloadCallback=null) {
+  constructor(container, stageId) {
     this.stage = new Konva.Stage({
       container: container,
-      width: width,
-      height: height,
+      width: window.innerWidth,
+      height: window.innerHeight,
     });
+    this.stage.id(stageId)
     this.shapeLayer = new Konva.Layer();
     this.stage.add(this.shapeLayer);
     this.shapeLayer.zIndex(0);
     this.shapeLayer.id('shape-layer');
-    if (displayIcons === true) {
-      this.iconLayer = new Konva.Layer();
-      this.stage.add(this.iconLayer);
-      this.iconLayer.id('icon-layer');
-      this.addIcons(height, width, downloadCallback);
-    }
+    // if (displayIcons === true) {
+    //   this.iconLayer = new Konva.Layer();
+    //   this.stage.add(this.iconLayer);
+    //   this.iconLayer.id('icon-layer');
+    //   this.addIcons(height, width, downloadCallback);
+    // }
     this.stage.on('dblclick dbltap', this.dropShape);
   }
 
