@@ -9,7 +9,10 @@
     <link rel="stylesheet" href="shape-style.css">
   </head>
   <body>
-    <div id="container"></div>
+    <div class="stacking-box">
+      <div class="stack" id="info"></div>
+      <div class="stack" id="container"></div>
+    </div>
     <script>
       stage1 = new ShapeStage(STAGE_1_ID);
       stage1.showNextIcon(STAGE_2_ID);
