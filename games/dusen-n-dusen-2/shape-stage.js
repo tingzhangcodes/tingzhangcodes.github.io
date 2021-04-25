@@ -23,24 +23,25 @@ class ShapeStage {
     this.stage.add(this.iconLayer);
     this.iconLayer.zIndex(1);
     this.iconLayer.id('icon-layer');
+    this.showInfoIcon()
 
     this.stage.on('dblclick dbltap', this.dropShape);
   }
 
+
   showInfoIcon() {
     // https://fontawesome.com/icons/info-circle?style=solid
-    const infoIcon = 'info-circle-solid.svg';
-    this.showIcon(infoIcon, toggleInfo, 'right-center')
+    const iconFile = 'info-circle-solid.svg';
+    this.showIcon(iconFile, toggleInfo, 'right-center')
   }
 
-  // addIcons(stageHeight, stageWidth, downloadCallback) {
-  //   // https://fontawesome.com/icons/arrow-alt-circle-down?style=solid
-  //   const downloadIcon = 'arrow-alt-circle-down-solid.svg';
-  //   this.addIcon(downloadIcon, stageHeight, stageWidth, downloadCallback)
-  //   // https://fontawesome.com/icons/info-circle?style=solid
-  //   const infoIcon = 'info-circle-solid.svg';
-  //   this.addIcon(infoIcon, stageHeight, stageWidth, toggleInfo, 2)
-  // }
+
+  showNextIcon() {
+    // https://fontawesome.com/icons/arrow-alt-circle-right
+    const iconFile = 'arrow-alt-circle-right-solid.svg';
+    this.showIcon(iconFile, toggleInfo, 'right')
+  }
+
 
   showIcon(iconFile, callback, location='right-center') {
     const path = 'https://tngzng.github.io/games/dusen-n-dusen/assets/';
@@ -70,6 +71,7 @@ class ShapeStage {
       this.iconLayer.zIndex(1);
     })
   }
+
 
   dropShape(event) {
     var stage = this.getStage();
