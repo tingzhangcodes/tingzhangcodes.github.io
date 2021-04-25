@@ -123,33 +123,32 @@ class ShapeStage {
 }
 
 
+function showStage(stageId) {
+  var stageSet = new Set([STAGE_1_ID, STAGE_2_ID, STAGE_3_ID]);
+  stageSet.delete(stageId);
+
+  var stageToShow = document.getElementById(stageId);
+  stageToShow.style.display = "block";
+
+  for (let hideId of stageSet) {
+    var hideStage = document.getElementById(hideId);
+    hideStage.style.display = "none";
+  }
+}
+
+
 function showStage1(event) {
-  var stage1 = document.getElementById(STAGE_1_ID);
-  stage1.style.display = "block";
-  var stage2 = document.getElementById(STAGE_2_ID);
-  stage2.style.display = "none";
-  var stage3 = document.getElementById(STAGE_3_ID);
-  stage3.style.display = "none";
+  showStage(STAGE_1_ID);
 }
 
 
 function showStage2(event) {
-  var stage1 = document.getElementById(STAGE_1_ID);
-  stage1.style.display = "none";
-  var stage2 = document.getElementById(STAGE_2_ID);
-  stage2.style.display = "block";
-  var stage3 = document.getElementById(STAGE_3_ID);
-  stage3.style.display = "none";
+  showStage(STAGE_2_ID);
 }
 
 
 function showStage3(event) {
-  var stage1 = document.getElementById(STAGE_1_ID);
-  stage1.style.display = "none";
-  var stage2 = document.getElementById(STAGE_2_ID);
-  stage2.style.display = "none";
-  var stage3 = document.getElementById(STAGE_3_ID);
-  stage3.style.display = "block";
+  showStage(STAGE_3_ID);
 }
 
 
