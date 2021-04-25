@@ -283,19 +283,20 @@ function cloneCanvas(oldCanvas) {
 }
 
 
-function downloadShapes() {
-  var stage1Div = document.getElementById(STAGE_1_ID);
-  var stage1Canvas = stage1Div.getElementsByTagName('canvas')[0];
-  var stage1Ctx = stage1Canvas.getContext("2d");
+function getStageCanvas(stageId) {
+  var stageDiv = document.getElementById(stageId);
+  var stageCanvas = stageDiv.getElementsByTagName('canvas')[0];
+  var stageCtx = stageCanvas.getContext("2d");
+  return [stageCanvas, stageCtx]
+}
 
-  var stage2Div = document.getElementById(STAGE_2_ID);
-  var stage2Canvas = stage2Div.getElementsByTagName('canvas')[0];
-  var stage2Ctx = stage2Canvas.getContext("2d");
+
+function downloadShapes() {
+  var [stage1Canvas, stage1Ctx] = getStageCanvas(STAGE_1_ID);
+  var [stage2Canvas, stage2Ctx] = getStageCanvas(STAGE_2_ID);
   var ctxList = [stage1Ctx, stage2Ctx];
 
-  var stage3Div = document.getElementById(STAGE_3_ID);
-  var stage3Canvas = stage3Div.getElementsByTagName('canvas')[0];
-  var stage3Ctx = stage3Canvas.getContext("2d");
+  var [stage3Canvas, stage3Ctx] = getStageCanvas(STAGE_3_ID);
 
   const step = 25;
   for (let pixel = 0; pixel < stage3Canvas.width; pixel += step) {
