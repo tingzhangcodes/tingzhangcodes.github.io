@@ -36,7 +36,7 @@ class ShapeStage {
 
   addIcon(iconFile, stageHeight, stageWidth, callback, padMultiplier=1) {
     const path = 'https://tngzng.github.io/games/dusen-n-dusen/assets/';
-    const dimension = 48;
+    const dimension = 36;
     const padding = 12;
 
     Konva.Image.fromURL(`${path}/${iconFile}`, (image) => {
@@ -69,24 +69,26 @@ class ShapeStage {
 function toggleInfo(event) {
   var layer = this.getStage().findOne('#info-layer');
   if (layer === undefined) {
+    const desktopStyling = (window.innerWidth >= 768);
     layer = new Konva.Layer();
     this.getStage().add(layer);
     layer.id('info-layer');
     const infoText = [
-      "• Tap twice to drop a shape.",
-      "• Move shapes where you want.",
-      "• Hit download when you're done.",
+      "Tap twice for new shape.",
+      "Drag to move.",
+      "Hit download to save.",
     ]
-    const padding = 12;
     var text = new Konva.Text({
-      x: 12,
-      y: 12,
       text: infoText.join('\n'),
       fontSize: 18,
       fontStyle: 'bold',
       fontFamily: 'Courier',
       fill: '#141414',
-      width: this.getStage().width() - padding,
+      align: 'center',
+      verticalAlign: 'middle',
+      horizontalAlign: 'middle',
+      height: this.getStage().height(),
+      width: this.getStage().width(),
     });
     layer.add(text);
     this.getStage().add(layer)
