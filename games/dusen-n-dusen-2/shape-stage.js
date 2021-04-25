@@ -284,24 +284,28 @@ function cloneCanvas(oldCanvas) {
 
 
 function downloadShapes() {
-  var canvasList = document.getElementsByTagName("canvas");
-  var leftCanvas = canvasList[0];
-  var leftCtx = leftCanvas.getContext("2d");
-  var rightCanvas = canvasList[1];
-  var rightCtx = rightCanvas.getContext("2d");
-  var ctxList = [leftCtx, rightCtx];
-  var tempCanvas = cloneCanvas(leftCanvas);
-  var tempCtx = tempCanvas.getContext("2d")
+  var stage1Div = document.getElementById(STAGE_1_ID);
+  var stage1Canvas = stage1Div.getElementsByTagName('canvas')[0];
+  var stage1Ctx = stage1Canvas.getContext("2d");
+
+  var stage2Div = document.getElementById(STAGE_2_ID);
+  var stage2Canvas = stage2Div.getElementsByTagName('canvas')[0];
+  var stage2Ctx = stage2Canvas.getContext("2d");
+  var ctxList = [stage1Ctx, stage2Ctx];
+
+  var stage3Div = document.getElementById(STAGE_3_ID);
+  var stage3Canvas = stage3Div.getElementsByTagName('canvas')[0];
+  var stage3Ctx = stage3Canvas.getContext("2d");
 
   const step = 25;
-  for (let pixel = 0; pixel < tempCanvas.width; pixel += step) {
+  for (let pixel = 0; pixel < stage3Canvas.width; pixel += step) {
     // i will toggle from 0 to 1 and back with each iteration
     var i = (pixel / step) % 2;
     // https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas
-    var imageData = ctxList[i].getImageData(pixel, 0, step, tempCanvas.height);
-    tempCtx.putImageData(imageData, pixel, 0);
+    var imageData = ctxList[i].getImageData(pixel, 0, step, stage3Canvas.height);
+    stage3Ctx.putImageData(imageData, pixel, 0);
   }
 
-  var dataURL = tempCanvas.toDataURL("image/png");
+  var dataURL = stage3Canvas.toDataURL("image/png");
   downloadURI(dataURL, 'dusen-n-dusen.png');
 }
