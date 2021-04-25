@@ -152,6 +152,26 @@ function showStage3(event) {
 }
 
 
+function getInfoText(stagId) {
+  const editingInfo =  [
+    "Tap twice to make a shape.",
+    "Drag shapes to move.",
+    "Hit next when you're ready.",
+  ];
+  switch (stagId) {
+    case STAGE_1_ID:
+      return editingInfo;
+    case STAGE_2_ID:
+      return editingInfo;
+    case STAGE_3_ID:
+      return [
+        "Your masterpiece is done!",
+        "Hit download to save.",
+      ];
+  }
+}
+
+
 function toggleInfo(event) {
   var layer = this.getStage().findOne('#info-layer');
   if (layer === undefined) {
@@ -159,14 +179,10 @@ function toggleInfo(event) {
     layer = new Konva.Layer();
     this.getStage().add(layer);
     layer.id('info-layer');
-    const infoText = [
-      "Tap twice for new shape.",
-      "Drag to move.",
-      "Download to save.",
-    ]
+    var infoText = getInfoText(this.getStage().id())
     var text = new Konva.Text({
       text: infoText.join('\n'),
-      fontSize: 18,
+      fontSize: 22,
       fontStyle: 'bold',
       fontFamily: 'Courier',
       fill: '#141414',
