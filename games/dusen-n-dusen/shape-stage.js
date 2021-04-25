@@ -27,24 +27,30 @@ class ShapeStage {
   }
 
   addIcons(stageHeight, stageWidth, downloadCallback) {
+    const desktopStyling = (window.innerWidth >= 768);
     // https://fontawesome.com/icons/arrow-alt-circle-down?style=solid
     const downloadIcon = 'arrow-alt-circle-down-solid.svg';
-    this.addIcon(downloadIcon, stageHeight, stageWidth, downloadCallback)
     // https://fontawesome.com/icons/info-circle?style=solid
     const infoIcon = 'info-circle-solid.svg';
-    this.addIcon(infoIcon, stageHeight, stageWidth, toggleInfo, 2)
+    if (desktopStyling === true) {
+      this.addIcon(downloadIcon, PADDING, PADDING, downloadCallback)
+      this.addIcon(infoIcon, PADDING * 2 + ICON_DIMENSION, PADDING, toggleInfo)
+    } else {
+      var downloadX = stageWidth - ICON_DIMENSION * 2 - PADDING * 2;
+      this.addIcon(downloadIcon, downloadX, PADDING, downloadCallback)
+      var infoX = stageWidth - ICON_DIMENSION - PADDING;
+      this.addIcon(infoIcon, infoX, PADDING, toggleInfo)
+    }
   }
 
-  addIcon(iconFile, stageHeight, stageWidth, callback, rightPadMultiplier=1) {
+  addIcon(iconFile, x, y, callback) {
     const path = 'https://tngzng.github.io/games/dusen-n-dusen/assets/';
-    const desktopStyling = (window.innerWidth >= 768);
 
     Konva.Image.fromURL(`${path}/${iconFile}`, (image) => {
       image.setWidth(ICON_DIMENSION);
       image.setHeight(ICON_DIMENSION);
-      const iconY = PADDING;
-      image.setY(iconY);
-      image.setX(stageWidth - image.width() * rightPadMultiplier - PADDING * rightPadMultiplier);
+      image.setX(x);
+      image.setY(y);
       addCursorStyling(image);
       image.on('click tap', callback)
       this.iconLayer.add(image);
@@ -85,7 +91,6 @@ function toggleInfo(event) {
       fill: '#141414',
       align: 'center',
       verticalAlign: 'middle',
-      horizontalAlign: 'middle',
       height: this.getStage().height(),
       width: this.getStage().width(),
     });

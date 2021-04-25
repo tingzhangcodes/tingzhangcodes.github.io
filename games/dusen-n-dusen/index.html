@@ -11,15 +11,15 @@
   </head>
   <body>
     <div class="container">
-        <div class="canvas" id="dark"></div>
         <div class="canvas" id="light"></div>
+        <div class="canvas" id="dark"></div>
     </div>
     <script>
       const STAGE_WIDTH = document.getElementById('dark').offsetWidth;
       const STAGE_HEIGHT = document.getElementById('dark').offsetHeight;
 
-      new ShapeStage('dark', STAGE_WIDTH, STAGE_HEIGHT);
       new ShapeStage('light', STAGE_WIDTH, STAGE_HEIGHT, true, downloadShapes);
+      new ShapeStage('dark', STAGE_WIDTH, STAGE_HEIGHT);
     </script>
   </body>
 </html>
