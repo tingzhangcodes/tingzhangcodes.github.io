@@ -149,6 +149,7 @@ function showStage2(event) {
 
 function showStage3(event) {
   showStage(STAGE_3_ID);
+  spliceStages();
 }
 
 
@@ -289,7 +290,7 @@ function getStageCanvas(stageId) {
 }
 
 
-function downloadShapes() {
+function spliceStages() {
   var [stage1Canvas, stage1Ctx] = getStageCanvas(STAGE_1_ID);
   var [stage2Canvas, stage2Ctx] = getStageCanvas(STAGE_2_ID);
   var ctxList = [stage1Ctx, stage2Ctx];
@@ -304,6 +305,11 @@ function downloadShapes() {
     var imageData = ctxList[i].getImageData(pixel, 0, step, stage3Canvas.height);
     stage3Ctx.putImageData(imageData, pixel, 0);
   }
+}
+
+
+function downloadShapes() {
+  var [stage3Canvas, stage3Ctx] = getStageCanvas(STAGE_3_ID);
 
   var dataURL = stage3Canvas.toDataURL("image/png");
   downloadURI(dataURL, 'dusen-n-dusen.png');
