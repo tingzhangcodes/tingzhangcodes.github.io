@@ -9,7 +9,7 @@ const STAGE_3_ID = "stage-3";
 
 
 class ShapeStage {
-  constructor(stageId, visible=true) {
+  constructor(stageId, visible=true, editable=true) {
     var container = document.getElementById("container");
     var stageDiv = document.createElement("div");
     stageDiv.id = stageId;
@@ -27,16 +27,18 @@ class ShapeStage {
 
     this.shapeLayer = new Konva.Layer();
     this.stage.add(this.shapeLayer);
-    this.shapeLayer.zIndex(0);
     this.shapeLayer.id('shape-layer');
+    this.shapeLayer.zIndex(0);
 
     this.iconLayer = new Konva.Layer();
     this.stage.add(this.iconLayer);
-    this.iconLayer.zIndex(1);
     this.iconLayer.id('icon-layer');
+    this.iconLayer.zIndex(1);
     this.showInfoIcon()
 
-    this.stage.on('dblclick dbltap', this.dropShape);
+    if (editable === true) {
+      this.stage.on('dblclick dbltap', this.dropShape);
+    }
   }
 
 
@@ -127,12 +129,16 @@ function showStage(stageId) {
   var stageSet = new Set([STAGE_1_ID, STAGE_2_ID, STAGE_3_ID]);
   stageSet.delete(stageId);
 
-  var stageToShow = document.getElementById(stageId);
-  stageToShow.style.display = "block";
+  var divToShow = document.getElementById(stageId);
+  divToShow.style.display = "block";
+  var stageToShow = Konva.stages.find(stage => stage.attrs.id == stageId);
+  stageToShow.setListening(true);
 
   for (let hideId of stageSet) {
-    var hideStage = document.getElementById(hideId);
-    hideStage.style.display = "none";
+    var hideDiv = document.getElementById(hideId);
+    hideDiv.style.display = "none";
+    var stageToHide = Konva.stages.find(stage => stage.attrs.id == hideId);
+    stageToHide.setListening(false);
   }
 }
 
