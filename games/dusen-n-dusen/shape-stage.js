@@ -54,13 +54,14 @@ class ShapeStage {
   }
 
   dropShape(event) {
-    const pointerPosition = this.getStage().getPointerPosition();
+    var stage = this.getStage();
+    const pointerPosition = stage.getPointerPosition();
     const x = pointerPosition.x;
     const y = pointerPosition.y;
-    var shape = makeShape(x, y);
-    var layer = this.getStage().findOne('#shape-layer');
+    var shape = makeShape(x, y, stage.width());
+    var layer = stage.findOne('#shape-layer');
     layer.add(shape);
-    this.getStage().add(layer);
+    stage.add(layer);
     layer.zIndex(0);
   }
 }
@@ -76,7 +77,7 @@ function toggleInfo(event) {
     const infoText = [
       "Tap twice for new shape.",
       "Drag to move.",
-      "Hit download to save.",
+      "Download to save.",
     ]
     var text = new Konva.Text({
       text: infoText.join('\n'),
@@ -122,45 +123,45 @@ function getRandomElement(array) {
 }
 
 
-function makeRandomBox(x, y) {
+function makeRandomBox(x, y, stageWidth) {
   return new Konva.Rect({
     x: x,
     y: y,
-    width: getRandomInt(100, 300),
-    height: getRandomInt(100, 300),
+    width: getRandomInt(stageWidth / 8, stageWidth / 4),
+    height: getRandomInt(stageWidth / 8, stageWidth / 4),
     fill: getRandomElement(COLORS),
     draggable: true,
   });
 }
 
 
-function makeRandomPolygon(x, y) {
+function makeRandomPolygon(x, y, stageWidth) {
   return new Konva.RegularPolygon({
     x: x,
     y: y,
     sides: 6,
-    radius: getRandomInt(100, 200),
+    radius: getRandomInt(stageWidth / 8, stageWidth / 4),
     fill: getRandomElement(COLORS),
     draggable: true,
   });
 }
 
 
-function makeRandomCircle(x, y) {
+function makeRandomCircle(x, y, stageWidth) {
   return new Konva.Circle({
     x: x,
     y: y,
-    radius: getRandomInt(100, 200),
+    radius: getRandomInt(stageWidth / 8, stageWidth / 4),
     fill: getRandomElement(COLORS),
     draggable: true,
   });
 }
 
 
-function makeShape(x, y ) {
+function makeShape(x, y, stageWidth) {
   var shapeFuncs = [makeRandomPolygon, makeRandomBox, makeRandomCircle];
   var shapeFunc = getRandomElement(shapeFuncs);
-  var shape = shapeFunc(x, y)
+  var shape = shapeFunc(x, y, stageWidth)
   addCursorStyling(shape);
 
   return shape;
