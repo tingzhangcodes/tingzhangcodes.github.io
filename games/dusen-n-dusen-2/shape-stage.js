@@ -30,7 +30,7 @@ class ShapeStage {
   showInfoIcon() {
     // https://fontawesome.com/icons/info-circle?style=solid
     const infoIcon = 'info-circle-solid.svg';
-    this.showIcon(infoIcon, toggleInfo)
+    this.showIcon(infoIcon, toggleInfo, 'right-center')
   }
 
   // addIcons(stageHeight, stageWidth, downloadCallback) {
@@ -42,7 +42,7 @@ class ShapeStage {
   //   this.addIcon(infoIcon, stageHeight, stageWidth, toggleInfo, 2)
   // }
 
-  showIcon(iconFile, callback, padMultiplier=1) {
+  showIcon(iconFile, callback, location='right-center') {
     const path = 'https://tngzng.github.io/games/dusen-n-dusen/assets/';
     const dimension = 36;
     const padding = 12;
@@ -51,7 +51,17 @@ class ShapeStage {
       image.setWidth(dimension);
       image.setHeight(dimension);
       image.setY(padding);
-      const iconX = this.stage.width() - image.width() * (2 + padMultiplier) - padding * padMultiplier;
+      switch(location) {
+        case 'right':
+          var iconX = this.stage.width() - image.width() - padding;
+          break
+        case 'right-center':
+          var iconX = this.stage.width() - image.width() * 2 - padding * 2;
+          break
+        case 'left':
+          var iconX = padding
+          break
+      }
       image.setX(iconX);
       addCursorStyling(image);
       image.on('click tap', callback)
