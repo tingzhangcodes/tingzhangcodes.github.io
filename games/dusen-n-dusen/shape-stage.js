@@ -26,6 +26,14 @@ class ShapeStage {
     this.stage.id(stageId)
 
     this.shapeLayer = new Konva.Layer();
+    var background = new Konva.Rect({
+      x: 0,
+      y: 0,
+      width: this.stage.width(),
+      height: this.stage.height(),
+      fill: 'white',
+    });
+    this.shapeLayer.add(background);
     this.stage.add(this.shapeLayer);
     this.shapeLayer.id('shape-layer');
     this.shapeLayer.zIndex(0);
@@ -35,6 +43,8 @@ class ShapeStage {
     this.iconLayer.id('icon-layer');
     this.iconLayer.zIndex(1);
     this.showInfoIcon()
+
+    makeInfoLayer(this.stage);
 
     if (editable === true) {
       this.stage.on('dblclick dbltap', this.dropShape);
@@ -167,7 +177,8 @@ function getInfoText(stagId) {
   const editingInfo =  [
     "Tap twice to make a shape.",
     "Drag shapes to move.",
-    "Hit next when you're ready.",
+    "Hit i to hide instructions.",
+    "Hit next when you're done.",
   ];
   switch (stagId) {
     case STAGE_1_ID:
@@ -177,9 +188,43 @@ function getInfoText(stagId) {
     case STAGE_3_ID:
       return [
         "Your masterpiece is done!\n",
+        "Hit i to hide instructions.",
         "Hit download to save.",
       ];
   }
+}
+
+
+function makeInfoLayer(stage) {
+  var layer = stage.findOne('#info-layer');
+  const desktopStyling = (window.innerWidth >= 768);
+  layer = new Konva.Layer();
+  stage.add(layer);
+  layer.id('info-layer');
+
+  var tooltip = new Konva.Label({
+      opacity: 1,
+      x: stage.width() / 2,
+      y: stage.height() / 2,
+    });
+  tooltip.add(new Konva.Tag({fill: 'black'}));
+
+  var infoText = getInfoText(stage.id())
+  var text = new Konva.Text({
+    text: infoText.join('\n'),
+    fontSize: 22,
+    fontFamily: 'Courier',
+    fill: 'white',
+    align: 'center',
+  });
+
+  // horizontally and vertically center
+  tooltip.offsetX(text.width() / 2)
+  tooltip.offsetY(text.height() / 2)
+  tooltip.add(text);
+  layer.add(tooltip);
+  stage.add(layer)
+  layer.zIndex(1);
 }
 
 
@@ -187,34 +232,7 @@ function toggleInfo(event) {
   var layer = this.getStage().findOne('#info-layer');
 
   if (layer === undefined) {
-    const desktopStyling = (window.innerWidth >= 768);
-    layer = new Konva.Layer();
-    this.getStage().add(layer);
-    layer.id('info-layer');
-
-    var tooltip = new Konva.Label({
-        opacity: 1,
-        x: this.getStage().width() / 2,
-        y: this.getStage().height() / 2,
-      });
-    tooltip.add(new Konva.Tag({fill: 'black'}));
-
-    var infoText = getInfoText(this.getStage().id())
-    var text = new Konva.Text({
-      text: infoText.join('\n'),
-      fontSize: 22,
-      fontFamily: 'Courier',
-      fill: 'white',
-      align: 'center',
-    });
-
-    // horizontally and vertically center
-    tooltip.offsetX(text.width() / 2)
-    tooltip.offsetY(text.height() / 2)
-    tooltip.add(text);
-    layer.add(tooltip);
-    this.getStage().add(layer)
-    layer.zIndex(1);
+    makeInfoLayer(this.getStage());
   } else {
     layer.destroy(); // 💥
   }
