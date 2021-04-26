@@ -26,6 +26,14 @@ class ShapeStage {
     this.stage.id(stageId)
 
     this.shapeLayer = new Konva.Layer();
+    var background = new Konva.Rect({
+      x: 0,
+      y: 0,
+      width: this.stage.width(),
+      height: this.stage.height(),
+      fill: 'white',
+    });
+    this.shapeLayer.add(background);
     this.stage.add(this.shapeLayer);
     this.shapeLayer.id('shape-layer');
     this.shapeLayer.zIndex(0);
