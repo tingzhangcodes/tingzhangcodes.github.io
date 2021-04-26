@@ -36,6 +36,8 @@ class ShapeStage {
     this.iconLayer.zIndex(1);
     this.showInfoIcon()
 
+    makeInfoLayer(this.stage);
+
     if (editable === true) {
       this.stage.on('dblclick dbltap', this.dropShape);
     }
