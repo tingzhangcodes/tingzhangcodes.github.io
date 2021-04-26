@@ -177,7 +177,8 @@ function getInfoText(stagId) {
   const editingInfo =  [
     "Tap twice to make a shape.",
     "Drag shapes to move.",
-    "Hit next when you're ready.",
+    "Hit i to hide instructions.",
+    "Hit next when you're done.",
   ];
   switch (stagId) {
     case STAGE_1_ID:
@@ -187,6 +188,7 @@ function getInfoText(stagId) {
     case STAGE_3_ID:
       return [
         "Your masterpiece is done!\n",
+        "Hit i to hide instructions.",
         "Hit download to save.",
       ];
   }
