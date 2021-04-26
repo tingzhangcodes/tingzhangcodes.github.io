@@ -4,22 +4,23 @@
     <meta name="viewport" content="width=device-width" />
     <script src="https://unpkg.com/konva@7.2.5/konva.min.js"></script>
     <script src="shape-stage.js"></script>
-    <script src="shape-download.js"></script>
     <meta charset="utf-8" />
     <title>dusen n' dusen drawing</title>
     <link rel="stylesheet" href="shape-style.css">
   </head>
   <body>
-    <div class="container">
-        <div class="canvas" id="dark"></div>
-        <div class="canvas" id="light"></div>
-    </div>
+    <div id="container"></div>
     <script>
-      const STAGE_WIDTH = document.getElementById('dark').offsetWidth;
-      const STAGE_HEIGHT = document.getElementById('dark').offsetHeight;
+      stage1 = new ShapeStage(STAGE_1_ID);
+      stage1.showNextIcon(STAGE_2_ID);
 
-      new ShapeStage('dark', STAGE_WIDTH, STAGE_HEIGHT);
-      new ShapeStage('light', STAGE_WIDTH, STAGE_HEIGHT, true, downloadShapes);
+      stage2 = new ShapeStage(STAGE_2_ID, false);
+      stage2.showPrevIcon(STAGE_1_ID);
+      stage2.showNextIcon(STAGE_3_ID);
+
+      stage3 = new ShapeStage(STAGE_3_ID, false, false);
+      stage3.showPrevIcon(STAGE_2_ID);
+      stage3.showDownloadIcon();
     </script>
   </body>
 </html>
