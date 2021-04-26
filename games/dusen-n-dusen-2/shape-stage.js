@@ -61,7 +61,7 @@ class ShapeStage {
 
   showNextIcon(nextStage) {
     // https://fontawesome.com/icons/arrow-alt-circle-right
-    const iconFile = 'arrow-alt-circle-right-solid.svg';
+    const iconFile = 'arrow-right-solid.svg';
     var callback = this.getShowStageCallback(nextStage);
     this.showIcon(iconFile, callback, 'right')
   }
@@ -69,20 +69,20 @@ class ShapeStage {
 
   showPrevIcon(prevStage) {
     // https://fontawesome.com/icons/arrow-alt-circle-left
-    const iconFile = 'arrow-alt-circle-left-solid.svg';
+    const iconFile = 'arrow-left-solid.svg';
     var callback = this.getShowStageCallback(prevStage);
     this.showIcon(iconFile, callback, 'left')
   }
 
   showDownloadIcon() {
     // https://fontawesome.com/icons/arrow-alt-circle-down
-    const iconFile = 'arrow-alt-circle-down-solid.svg';
+    const iconFile = 'arrow-down-solid.svg';
     this.showIcon(iconFile, downloadShapes, 'right')
   }
 
 
   showIcon(iconFile, callback, location='right-center') {
-    const path = 'https://tngzng.github.io/games/dusen-n-dusen/assets/';
+    const path = 'https://tngzng.github.io/games/dusen-n-dusen-2/assets/';
     const dimension = 48;
     const padding = 12;
 
@@ -159,6 +159,14 @@ function showStage3(event) {
 }
 
 
+// https://stackoverflow.com/questions/6195729/most-efficient-way-to-prepend-a-value-to-an-array
+function prepend(value, array) {
+  var newArray = array.slice();
+  newArray.unshift(value);
+  return newArray;
+}
+
+
 function getInfoText(stagId) {
   const editingInfo =  [
     "Tap twice to make a shape.",
@@ -167,12 +175,12 @@ function getInfoText(stagId) {
   ];
   switch (stagId) {
     case STAGE_1_ID:
-      return editingInfo;
+      return prepend("Make your first drawing:\n", editingInfo);
     case STAGE_2_ID:
-      return editingInfo;
+      return prepend("Make your second drawing:\n", editingInfo);
     case STAGE_3_ID:
       return [
-        "Your masterpiece is done!",
+        "Your masterpiece is done!\n",
         "Hit download to save.",
       ];
   }
