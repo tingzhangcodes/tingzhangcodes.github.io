@@ -189,25 +189,34 @@ function getInfoText(stagId) {
 
 function toggleInfo(event) {
   var layer = this.getStage().findOne('#info-layer');
+
   if (layer === undefined) {
     const desktopStyling = (window.innerWidth >= 768);
     layer = new Konva.Layer();
     this.getStage().add(layer);
     layer.id('info-layer');
+
+    var tooltip = new Konva.Label({
+        opacity: 1,
+        x: this.getStage().width() / 2,
+        y: this.getStage().height() / 2,
+      });
+    tooltip.add(new Konva.Tag({fill: 'black'}));
+
     var infoText = getInfoText(this.getStage().id())
     var text = new Konva.Text({
       text: infoText.join('\n'),
       fontSize: 22,
-      fontStyle: 'bold',
       fontFamily: 'Courier',
-      fill: '#141414',
+      fill: 'white',
       align: 'center',
-      verticalAlign: 'middle',
-      horizontalAlign: 'middle',
-      height: this.getStage().height(),
-      width: this.getStage().width(),
     });
-    layer.add(text);
+
+    // horizontally and vertically center
+    tooltip.offsetX(text.width() / 2)
+    tooltip.offsetY(text.height() / 2)
+    tooltip.add(text);
+    layer.add(tooltip);
     this.getStage().add(layer)
     layer.zIndex(1);
   } else {
