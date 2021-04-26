@@ -189,6 +189,7 @@ function getInfoText(stagId) {
 
 function toggleInfo(event) {
   var layer = this.getStage().findOne('#info-layer');
+
   if (layer === undefined) {
     const desktopStyling = (window.innerWidth >= 768);
     layer = new Konva.Layer();
@@ -200,12 +201,7 @@ function toggleInfo(event) {
         x: this.getStage().width() / 2,
         y: this.getStage().height() / 2,
       });
-
-    tooltip.add(
-      new Konva.Tag({
-        fill: 'black',
-      })
-    );
+    tooltip.add(new Konva.Tag({fill: 'black'}));
 
     var infoText = getInfoText(this.getStage().id())
     var text = new Konva.Text({
@@ -214,9 +210,9 @@ function toggleInfo(event) {
       fontFamily: 'Courier',
       fill: 'white',
       align: 'center',
-      verticalAlign: 'middle',
-      horizontalAlign: 'middle',
     });
+
+    // horizontally and vertically center
     tooltip.offsetX(text.width() / 2)
     tooltip.offsetY(text.height() / 2)
     tooltip.add(text);
