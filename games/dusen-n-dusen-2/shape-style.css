@@ -3,16 +3,3 @@ body {
   padding: 0;
   overflow: hidden;
 }
-.stacking-box {
-  position: relative;
-}
-.stack {
-  width: 100%;
-  position: absolute;
-}
-#info p {
-  font-family: 'Courier Prime', monospace;
-  font-weight: 'bolder';
-  font-size: 22;
-  text-align: center;
-}

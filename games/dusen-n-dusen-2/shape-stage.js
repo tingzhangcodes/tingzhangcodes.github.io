@@ -188,41 +188,31 @@ function getInfoText(stagId) {
 
 
 function toggleInfo(event) {
-  var container = document.getElementById("info");
-  var infoDiv = document.createElement("div");
-  var infoText = getInfoText(this.getStage().id());
-  for (let text of infoText) {
-    var p = document.createElement("P");
-    p.innerText = text;
-    infoDiv.appendChild(p);
+  var layer = this.getStage().findOne('#info-layer');
+  if (layer === undefined) {
+    const desktopStyling = (window.innerWidth >= 768);
+    layer = new Konva.Layer();
+    this.getStage().add(layer);
+    layer.id('info-layer');
+    var infoText = getInfoText(this.getStage().id())
+    var text = new Konva.Text({
+      text: infoText.join('\n'),
+      fontSize: 22,
+      fontStyle: 'bold',
+      fontFamily: 'Courier',
+      fill: '#141414',
+      align: 'center',
+      verticalAlign: 'middle',
+      horizontalAlign: 'middle',
+      height: this.getStage().height(),
+      width: this.getStage().width(),
+    });
+    layer.add(text);
+    this.getStage().add(layer)
+    layer.zIndex(1);
+  } else {
+    layer.destroy(); // 💥
   }
-  container.appendChild(infoDiv);
-
-  // var layer = this.getStage().findOne('#info-layer');
-  // if (layer === undefined) {
-  //   const desktopStyling = (window.innerWidth >= 768);
-  //   layer = new Konva.Layer();
-  //   this.getStage().add(layer);
-  //   layer.id('info-layer');
-  //   var infoText = getInfoText(this.getStage().id())
-  //   var text = new Konva.Text({
-  //     text: infoText.join('\n'),
-  //     fontSize: 22,
-  //     fontStyle: 'bold',
-  //     fontFamily: 'Courier',
-  //     fill: '#141414',
-  //     align: 'center',
-  //     verticalAlign: 'middle',
-  //     horizontalAlign: 'middle',
-  //     height: this.getStage().height(),
-  //     width: this.getStage().width(),
-  //   });
-  //   layer.add(text);
-  //   this.getStage().add(layer)
-  //   layer.zIndex(1);
-  // } else {
-  //   layer.destroy(); // 💥
-  // }
 }
 
 
