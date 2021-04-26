@@ -183,38 +183,44 @@ function getInfoText(stagId) {
 }
 
 
+function makeInfoLayer(stage) {
+  var layer = stage.findOne('#info-layer');
+  const desktopStyling = (window.innerWidth >= 768);
+  layer = new Konva.Layer();
+  stage.add(layer);
+  layer.id('info-layer');
+
+  var tooltip = new Konva.Label({
+      opacity: 1,
+      x: stage.width() / 2,
+      y: stage.height() / 2,
+    });
+  tooltip.add(new Konva.Tag({fill: 'black'}));
+
+  var infoText = getInfoText(stage.id())
+  var text = new Konva.Text({
+    text: infoText.join('\n'),
+    fontSize: 22,
+    fontFamily: 'Courier',
+    fill: 'white',
+    align: 'center',
+  });
+
+  // horizontally and vertically center
+  tooltip.offsetX(text.width() / 2)
+  tooltip.offsetY(text.height() / 2)
+  tooltip.add(text);
+  layer.add(tooltip);
+  stage.add(layer)
+  layer.zIndex(1);
+}
+
+
 function toggleInfo(event) {
   var layer = this.getStage().findOne('#info-layer');
 
   if (layer === undefined) {
-    const desktopStyling = (window.innerWidth >= 768);
-    layer = new Konva.Layer();
-    this.getStage().add(layer);
-    layer.id('info-layer');
-
-    var tooltip = new Konva.Label({
-        opacity: 1,
-        x: this.getStage().width() / 2,
-        y: this.getStage().height() / 2,
-      });
-    tooltip.add(new Konva.Tag({fill: 'black'}));
-
-    var infoText = getInfoText(this.getStage().id())
-    var text = new Konva.Text({
-      text: infoText.join('\n'),
-      fontSize: 22,
-      fontFamily: 'Courier',
-      fill: 'white',
-      align: 'center',
-    });
-
-    // horizontally and vertically center
-    tooltip.offsetX(text.width() / 2)
-    tooltip.offsetY(text.height() / 2)
-    tooltip.add(text);
-    layer.add(tooltip);
-    this.getStage().add(layer)
-    layer.zIndex(1);
+    makeInfoLayer(this.getStage());
   } else {
     layer.destroy(); // 💥
   }
