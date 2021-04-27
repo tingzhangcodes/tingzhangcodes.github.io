@@ -52,9 +52,7 @@ class ShapeStage {
   }
 
   showInfoIcon() {
-    // https://fontawesome.com/icons
-    const iconFile = 'info-circle-solid.svg';
-    this.showIcon(iconFile, toggleInfo, 'right-center')
+    this.showIcon("ℹ️", toggleInfo, 'right-center')
   }
 
   getShowStageCallback(stage) {
@@ -68,53 +66,52 @@ class ShapeStage {
     }
   }
 
+
   showNextIcon(nextStage) {
-    // https://fontawesome.com/icons
-    const iconFile = 'arrow-right-solid.svg';
     var callback = this.getShowStageCallback(nextStage);
-    this.showIcon(iconFile, callback, 'right')
+    this.showIcon("➡️", callback, 'right')
   }
 
   showPrevIcon(prevStage) {
-    // https://fontawesome.com/icons
-    const iconFile = 'arrow-left-solid.svg';
     var callback = this.getShowStageCallback(prevStage);
-    this.showIcon(iconFile, callback, 'left')
+    this.showIcon("⬅️", callback, 'left')
   }
 
   showDownloadIcon() {
-    // https://fontawesome.com/icons
-    const iconFile = 'arrow-down-solid.svg';
-    this.showIcon(iconFile, downloadShapes, 'right')
+    this.showIcon("⬇️", downloadShapes, 'right')
   }
 
-  showIcon(iconFile, callback, location='right-center') {
-    const path = 'https://tngzng.github.io/games/dusen-n-dusen/assets/';
+  showIcon(iconText, callback, location='right-center') {
     const dimension = 48;
     const padding = 12;
-
-    Konva.Image.fromURL(`${path}/${iconFile}`, (image) => {
-      image.setWidth(dimension);
-      image.setHeight(dimension);
-      image.setY(padding);
-      switch(location) {
-        case 'right':
-          var iconX = this.stage.width() - image.width() - padding;
-          break
-        case 'right-center':
-          var iconX = this.stage.width() - image.width() * 2 - padding * 2;
-          break
-        case 'left':
-          var iconX = padding
-          break
-      }
-      image.setX(iconX);
-      addCursorStyling(image);
-      image.on('click tap', callback)
-      this.iconLayer.add(image);
-      this.stage.add(this.iconLayer);
-      this.iconLayer.zIndex(1);
-    })
+    switch(location) {
+      case 'right':
+        var iconX = this.stage.width() - dimension - padding;
+        break
+      case 'right-center':
+        var iconX = this.stage.width() - dimension * 2 - padding * 2;
+        break
+      case 'left':
+        var iconX = padding
+        break
+    }
+    var tooltip = new Konva.Label({
+      x: iconX,
+      y: padding,
+    });
+    var text = new Konva.Text({
+      text: iconText,
+      fontSize: dimension,
+      align: 'center',
+      fontFamily: 'Courier',
+      fill: 'black'
+    });
+    tooltip.add(text);
+    addCursorStyling(tooltip);
+    tooltip.on('click tap', callback)
+    this.iconLayer.add(tooltip);
+    this.stage.add(this.iconLayer);
+    this.iconLayer.zIndex(1);
   }
 
   dropShape(event) {
@@ -174,11 +171,12 @@ function prepend(value, array) {
 
 
 function getInfoText(stagId) {
+  const hideInfoText = "ℹ️ hides instructions.";
   const editingInfo =  [
-    "Tap twice to make a shape.",
-    "Drag shapes to move.",
-    "Hit i to hide instructions.",
-    "Hit next when you're done.",
+    "Tap twice to make shape.",
+    "Drag shapes to move.\n",
+    hideInfoText,
+    "➡️ for next step.",
   ];
   switch (stagId) {
     case STAGE_1_ID:
@@ -188,8 +186,8 @@ function getInfoText(stagId) {
     case STAGE_3_ID:
       return [
         "Your masterpiece is done!\n",
-        "Hit i to hide instructions.",
-        "Hit download to save.",
+        hideInfoText,
+        "⬇️ downloads image.",
       ];
   }
 }
@@ -203,18 +201,16 @@ function makeInfoLayer(stage) {
   layer.id('info-layer');
 
   var tooltip = new Konva.Label({
-      opacity: 1,
       x: stage.width() / 2,
       y: stage.height() / 2,
     });
-  tooltip.add(new Konva.Tag({fill: 'black'}));
 
   var infoText = getInfoText(stage.id())
   var text = new Konva.Text({
     text: infoText.join('\n'),
     fontSize: 22,
     fontFamily: 'Courier',
-    fill: 'white',
+    fill: 'black',
     align: 'center',
   });
 
