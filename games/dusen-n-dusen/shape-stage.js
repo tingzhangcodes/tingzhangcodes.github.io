@@ -176,9 +176,9 @@ function prepend(value, array) {
 function getInfoText(stagId) {
   const editingInfo =  [
     "Tap twice to make a shape.",
-    "Drag shapes to move.",
-    "Hit i to hide instructions.",
-    "Hit next when you're done.",
+    "Drag shapes to move.\n",
+    "ℹ️ hides instructions.",
+    "➡️ for next step.",
   ];
   switch (stagId) {
     case STAGE_1_ID:
@@ -188,8 +188,8 @@ function getInfoText(stagId) {
     case STAGE_3_ID:
       return [
         "Your masterpiece is done!\n",
-        "Hit i to hide instructions.",
-        "Hit download to save.",
+        "Hit ℹ️ to hide instructions.",
+        "Hit ⬇️ to save.",
       ];
   }
 }
@@ -207,14 +207,13 @@ function makeInfoLayer(stage) {
       x: stage.width() / 2,
       y: stage.height() / 2,
     });
-  tooltip.add(new Konva.Tag({fill: 'black'}));
 
   var infoText = getInfoText(stage.id())
   var text = new Konva.Text({
     text: infoText.join('\n'),
     fontSize: 22,
     fontFamily: 'Courier',
-    fill: 'white',
+    fill: 'black',
     align: 'center',
   });
 
