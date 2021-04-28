@@ -83,21 +83,22 @@ class ShapeStage {
 
   showIcon(iconText, callback, location='right-center') {
     const dimension = 48;
-    const padding = 12;
+    const xPadding = 12;
+    const yPadding = 15;
     switch(location) {
       case 'right':
-        var iconX = this.stage.width() - dimension - padding;
+        var iconX = this.stage.width() - dimension - xPadding;
         break
       case 'right-center':
-        var iconX = this.stage.width() - dimension * 2 - padding * 2;
+        var iconX = this.stage.width() - dimension * 2 - xPadding * 2;
         break
       case 'left':
-        var iconX = padding
+        var iconX = xPadding
         break
     }
     var tooltip = new Konva.Label({
       x: iconX,
-      y: padding,
+      y: yPadding,
     });
     var text = new Konva.Text({
       text: iconText,
