@@ -1,0 +1,19 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #050505;
+    font-family: "Comic Sans MS", "Dosis", sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    height: 100%;
+}
+
+.center {
+  height: 100%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
