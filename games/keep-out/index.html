@@ -8,13 +8,14 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Balsamiq Sans">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Butcherman">
       <script src="konami.js"></script>
+      <script src="sparkle-cursor.js"></script>
       <title>keep out</title>
 
     </head>
 
-    <body>
+    <body style="background-color: rgb(5, 5, 5)">
         <div class="center">
-            <h1 id="message" style="font-family:Balsamiq Sans">keep out ;)</h1>
+            <h1 id="message" style="font-family:Butcherman">keep out ;(</h1>
         </div>
         <script>
             var fontEasterEgg = new Konami(() => {
@@ -38,6 +39,25 @@
             })
             // Changes the keyboard pattern to the "ArrowDown" key 2 times
             smileyEasterEgg.pattern = "4040"
+
+            var backgroundEasterEgg = new Konami(() => {
+                var body = document.body;
+                if (body.style.backgroundColor == "rgb(5, 5, 5)") {
+                    body.style.backgroundColor = "rgb(114, 11, 152)"
+                } else {
+                    body.style.backgroundColor = "rgb(5, 5, 5)"
+                }
+            })
+            backgroundEasterEgg.pattern = "38403739"
+
+            var cursorEasterEgg = new Konami(() => {
+                if (sparkleColour == "random") {
+                    sparkleColour = "red"
+                } else {
+                    sparkleColour = "random"
+                }
+            })
+            cursorEasterEgg.pattern = "1613"
 
         </script>
     </body>
