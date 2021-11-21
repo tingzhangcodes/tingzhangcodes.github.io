@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="style.css"/>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Balsamiq Sans">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Butcherman">
+      <script src="konami.js"></script>
+      <script src="sparkle-cursor.js"></script>
+      <script src="greeting.js"></script>
+      <title>keep out</title>
+
+    </head>
+
+    <body style="background-color: rgb(5, 5, 5)">
+        <div class="center">
+            <h1 id="message" style="font-family:Butcherman">keep out ;(</h1>
+        </div>
+        <script>
+            var fontEasterEgg = new Konami(() => {
+                var message = document.getElementById("message");
+                if (message.style.fontFamily.includes("Balsamiq Sans")) {
+                    message.style.fontFamily = "Butcherman"
+                } else {
+                    message.style.fontFamily = "Balsamiq Sans"
+                }
+            })
+            // Changes the keyboard pattern to the "ArrowUp" key 2 times
+            fontEasterEgg.pattern = "3838"
+
+            var smileyEasterEgg = new Konami(() => {
+                var message = document.getElementById("message");
+                if (message.textContent == "keep out ;)") {
+                    message.textContent = "keep out ;("
+                } else {
+                    message.textContent = "keep out ;)"
+                }
+            })
+            // Changes the keyboard pattern to the "ArrowDown" key 2 times
+            smileyEasterEgg.pattern = "4040"
+
+            var backgroundEasterEgg = new Konami(() => {
+                var body = document.body;
+                if (body.style.backgroundColor == "rgb(5, 5, 5)") {
+                    body.style.backgroundColor = "rgb(114, 11, 152)"
+                } else {
+                    body.style.backgroundColor = "rgb(5, 5, 5)"
+                }
+            })
+            backgroundEasterEgg.pattern = "38403739"
+
+            var cursorEasterEgg = new Konami(() => {
+                if (sparkleColour == "random") {
+                    sparkleColour = "red"
+                } else {
+                    sparkleColour = "random"
+                }
+            })
+            cursorEasterEgg.pattern = "1613"
+        </script>
+    </body>
+</html>
