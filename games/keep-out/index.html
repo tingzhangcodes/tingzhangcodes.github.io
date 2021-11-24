@@ -19,12 +19,21 @@
             <h1 id="message" style="font-family:Butcherman">keep out ;(</h1>
         </div>
         <script>
+            var numFound = 0;
+            const TOTAL_EGGS = 4;
+
+            var scoreGame = function() {
+                numFound += 1;
+                if (numFound >= TOTAL_EGGS) {
+                    displayPrize()
+                }
+            }
+
             var fontEasterEgg = new Konami(() => {
                 var message = document.getElementById("message");
-                if (message.style.fontFamily.includes("Balsamiq Sans")) {
-                    message.style.fontFamily = "Butcherman"
-                } else {
+                if (message.style.fontFamily.includes("Butcherman")) {
                     message.style.fontFamily = "Balsamiq Sans"
+                    scoreGame()
                 }
             })
             // Changes the keyboard pattern to the "ArrowUp" key 2 times
@@ -32,10 +41,9 @@
 
             var smileyEasterEgg = new Konami(() => {
                 var message = document.getElementById("message");
-                if (message.textContent == "keep out ;)") {
-                    message.textContent = "keep out ;("
-                } else {
+                if (message.textContent == "keep out ;(") {
                     message.textContent = "keep out ;)"
+                    scoreGame()
                 }
             })
             // Changes the keyboard pattern to the "ArrowDown" key 2 times
@@ -45,17 +53,15 @@
                 var body = document.body;
                 if (body.style.backgroundColor == "rgb(5, 5, 5)") {
                     body.style.backgroundColor = "rgb(114, 11, 152)"
-                } else {
-                    body.style.backgroundColor = "rgb(5, 5, 5)"
+                    scoreGame()
                 }
             })
             backgroundEasterEgg.pattern = "38403739"
 
             var cursorEasterEgg = new Konami(() => {
-                if (sparkleColour == "random") {
-                    sparkleColour = "red"
-                } else {
+                if (sparkleColour == "red") {
                     sparkleColour = "random"
+                    scoreGame()
                 }
             })
             cursorEasterEgg.pattern = "1613"
