@@ -21,9 +21,7 @@
         <script>
             var fontEasterEgg = new Konami(() => {
                 var message = document.getElementById("message");
-                if (message.style.fontFamily.includes("Balsamiq Sans")) {
-                    message.style.fontFamily = "Butcherman"
-                } else {
+                if (message.style.fontFamily.includes("Butcherman")) {
                     message.style.fontFamily = "Balsamiq Sans"
                 }
             })
@@ -32,9 +30,7 @@
 
             var smileyEasterEgg = new Konami(() => {
                 var message = document.getElementById("message");
-                if (message.textContent == "keep out ;)") {
-                    message.textContent = "keep out ;("
-                } else {
+                if (message.textContent == "keep out ;(") {
                     message.textContent = "keep out ;)"
                 }
             })
@@ -45,16 +41,12 @@
                 var body = document.body;
                 if (body.style.backgroundColor == "rgb(5, 5, 5)") {
                     body.style.backgroundColor = "rgb(114, 11, 152)"
-                } else {
-                    body.style.backgroundColor = "rgb(5, 5, 5)"
                 }
             })
             backgroundEasterEgg.pattern = "38403739"
 
             var cursorEasterEgg = new Konami(() => {
-                if (sparkleColour == "random") {
-                    sparkleColour = "red"
-                } else {
+                if (sparkleColour == "red") {
                     sparkleColour = "random"
                 }
             })
