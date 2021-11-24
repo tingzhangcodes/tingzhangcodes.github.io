@@ -13,3 +13,20 @@ console.log("%cthis is a classic easter egg hunt. \n\
 there are 4 hidden elements that can be unlocked with the right codes. \n\
 when you find all 4, you'll unlock the key to a prize. \n\
 good luck!", "color: green")
+
+var displayPrize = function() {
+    console.log(
+         "%ccongratulations!!! you've unlocked the key to the prize:",
+         "color:yellow"
+    )
+    console.log(`%c
+       .--.
+      /.-. '----------.
+      \\'-' .--"--""-"-'
+       '--'
+    `, "font-family:monospace; color:yellow")
+    console.log(
+         "%cto claim your prize text or email ting with the following code:",
+         "color:yellow"
+    )
+}
