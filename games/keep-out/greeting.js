@@ -7,8 +7,9 @@ console.log(`%c _______  _______  _______  _______                      _______ 
 | )   ( || (____/\\| ) \\ \\__| ) \\ \\__   | |     ( /   \\ )| )   ( || )   ( |/\\____) | \n\
 |/     \\|(_______/|/   \\__/|/   \\__/   \\_/     |/     \\||/     \\||/     \\|\\_______) \n\
 
-`, "font-family:monospace")
+`, "font-family:monospace; color:red")
 
-console.log("this is a classic easter egg hunt. \n\
-there are 5 hidden elements that can be unlocked with the right codes. \n\
-good luck!")
+console.log("%cthis is a classic easter egg hunt. \n\
+there are 4 hidden elements that can be unlocked with the right codes. \n\
+when you find all 4, you'll unlock the key to a prize. \n\
+good luck!", "color: green")
